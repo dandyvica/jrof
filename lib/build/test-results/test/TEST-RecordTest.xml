@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Record class tests" tests="8" skipped="0" failures="0" errors="0" timestamp="2021-11-21T19:11:00" hostname="b550m" time="0.031">
+  <properties/>
+  <testcase name="record length" classname="RecordTest" time="0.004"/>
+  <testcase name="stream" classname="RecordTest" time="0.008"/>
+  <testcase name="copy constructor" classname="RecordTest" time="0.004"/>
+  <testcase name="add fields" classname="RecordTest" time="0.002"/>
+  <testcase name="value" classname="RecordTest" time="0.002"/>
+  <testcase name="wrong index" classname="RecordTest" time="0.003"/>
+  <testcase name="constructor from XML fragment" classname="RecordTest" time="0.001"/>
+  <testcase name="iterator" classname="RecordTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

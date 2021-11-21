@@ -1,27 +1,8 @@
-# Record-based file libraries for different languages
-
-In some industries (mainly airline, bank, others welcome), a lot of files are exchanged using a record
-organization. Usually, the file is plain vanilla ASCII file where each line is mapped to a record, and
-each record to a field within this record. Record-oriented files are very popular on mainframes coming from Cobol programs.
-
-The way to recognize a record is generally by having a record identifier (example: first 2 characters
-of the line). Each record identifier defines the type of the record and how it is organized.
-Each record is a set of contiguous or non-contiguous fields, each field having a length (in chars), a type (either 
-representing an ascii or numeric field) and an offset from the beginning of the record.
-
-This Java library allows to loop through all the records, loop through all fields of a record, using Java simple classes.
-The definition (layout) of the file structure must be provided through an XML definition file.
-
-An example of such a file is the SSIM (chapter 7) file. You can find an example of such a file at https://github.com/sthonnard/ssimparser.
-
-The corresponding layout file is:
-
-```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <rof
     xmlns="http://www.w3schools.com"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.w3schools.com rbf.xsd"
+    xsi:schemaLocation="http://www.w3schools.com rof.xsd"
 >
 
     <meta version="2011" description="IATA SSIM file format" reclength="200"/>
@@ -145,50 +126,3 @@ The corresponding layout file is:
 	</record>
 
 </rof>
-```
-
-It's largely inspired from the ISR file format for provided by ATPCO.
-
-## Usage
-Following is a Java code snippet to use the *jrof* library:
-
-```java
-// open the layout
-try {
-    var layout = new Layout("ssim.xml");
-
-    // create a reader to get records from the rof
-    var rdr = new Reader("ssim.sample", layout);
-
-    // set the mapper function: it maps a line read from the record-oriented file to a record name
-    // in the XML layout
-    rdr.setMapper(x -> x.substring(0, 1));
-
-    // Now loop throw the records
-    for (Record rec : rdr) {
-        // record "0" is not interesting in the SSIM file
-        if (rec.getName().equals("0")) continue;
-
-        // print out record name
-        System.out.printf("found record: %s", rec.getName());
-    }
-} catch (IOException e) {
-    System.out.printf("I/O error <%s> when opening file <%s>", e, xml);
-} catch (Exception e) {
-    System.out.printf("error <%s> when opening file <%s>", e, xml);
-}
-```
-
-## Building the library
-To build and test the library, just type:
-
-```console
-$ ./gradlew build --info
-```
-
-The library is located at: _./lib/build/libs/jrof-0.1.0.jar_
-
-## Validating the XML layout
-```console
-$ xmllint --schema rof.xsd my_layout.xml --noout
-```

@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Implementation-Title: A library for reading record-oriented files
+Implementation-Version: 0.1.0
+

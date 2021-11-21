@@ -1,0 +1,1927 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rof xmlns="http://www.w3schools.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3schools.com rof.xsd">
+
+    <meta version="April 2016" description="ATPCO ISR file format" reclength="400" />
+
+    <fieldtype type="AN" class="string" pattern=".*" format="%-*.*s" />
+    <fieldtype type="A" class="string" pattern="[A-Za-z]+" format="%-*.*s" />
+    <fieldtype type="N" class="decimal" pattern="^[\d\.]+$" format="%0*.*g" />
+    <fieldtype type="I" class="integer" pattern="^\d+$" format="%0*.*d" />
+    <fieldtype type="D" class="date" pattern="[0-9]+" format="%Y%m%d" />
+    <fieldtype type="T" class="time" pattern="[0-9]+" format="%H%M" />
+
+    <record name="IS" alias="HEADER" description="ISR header">
+        <field id="1" name="APID" description="Application ID" start="1" length="15" type="A" />
+        <field id="2" name="FILL" description="Filler" start="16" length="2" type="AN" />
+        <field id="3" name="TRAD" description="Transmission Date" start="18" length="6" type="I" />
+        <field id="4" name="FILL" description="Filler" start="24" length="6" type="AN" />
+        <field id="5" name="RECC" description="Record Count" start="30" length="9" type="I" />
+        <field id="6" name="CXRR" description="Carrier/Vendor Code" start="39" length="3" type="AN" />
+        <field id="7" name="SRCE" description="Source of Data" start="42" length="3" type="AN" />
+        <field id="8" name="FILL" description="Filler" start="45" length="356" type="AN" />
+    </record>
+
+    <record name="TC" description="Alternate ISR header">
+        <field id="1" name="APID" description="Application ID" start="1" length="15" type="A" />
+        <field id="2" name="FILL" description="Filler" start="16" length="2" type="AN" />
+        <field id="3" name="TRAD" description="Transmission Date" start="18" length="6" type="I" />
+        <field id="4" name="FILL" description="Filler" start="24" length="6" type="AN" />
+        <field id="5" name="RECC" description="Record Count" start="30" length="9" type="I" />
+        <field id="6" name="CXRR" description="Carrier/Vendor Code" start="39" length="3" type="AN" />
+        <field id="7" name="SRCE" description="Source of Data" start="42" length="3" type="AN" />
+        <field id="8" name="FILL" description="Filler" start="45" length="356" type="AN" />
+    </record>
+
+    <record name="01" alias="R01" description="Base Sale Record">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="TRNC" description="Transaction Code" start="43" length="4" type="AN" />
+        <field id="8" name="FNDT" description="Data Foundation" start="47" length="1" type="AN" />
+        <field id="9" name="RTYP" description="Reversal Type" start="48" length="1" type="AN" />
+        <field id="10" name="INTR" description="Internal ATPCO Use only" start="49" length="1" type="AN" />
+        <field id="11" name="FVIN" description="Sales Data Exchange Plus Indicator" start="50" length="1" type="AN" />
+        <field id="12" name="TKMI" description="Ticketing Mode Indicator" start="51" length="1" type="AN" />
+        <field id="13" name="CJCP" description="Conjunction Ticket Indicator" start="52" length="3" type="AN" />
+        <field id="14" name="CREL" description="Conjunction-Relative Ticket" start="55" length="2" type="I" />
+        <field id="15" name="CTOT" description="Conjunction-Total Tickets" start="57" length="2" type="I" />
+        <field id="16" name="CPTK" description="Conjunction-Prime Ticket/Transmission Number" start="59" length="10" type="AN" />
+        <field id="17" name="CPUI" description="Coupon Use Indicator" start="69" length="4" type="AN" />
+        <field id="18" name="ATKT" description="Associated Ticket Number" start="73" length="15" type="AN" />
+        <field id="19" name="RPSI" description="Reporting System Identifier" start="88" length="4" type="AN" />
+        <field id="20" name="PNRR" description="PNR Reference and/or Airline Data" start="92" length="13" type="AN" />
+        <field id="21" name="SUDA" description="Supplier of Data" start="105" length="2" type="AN" />
+        <field id="22" name="FILL" description="Filler" start="107" length="1" type="AN" />
+        <field id="23" name="PXNM" description="Passenger Name" start="108" length="49" type="AN" />
+        <field id="24" name="DAIS" description="Date of Issue" start="157" length="8" type="D" />
+        <field id="25" name="TIOT" description="Ticketing Entity Outlet Type" start="165" length="1" type="AN" />
+        <field id="26" name="AGTN" description="Agent Numeric Code/Airline Location Number" start="166" length="8" type="AN" />
+        <field id="27" name="AREI" description="Automated Re-pricing Engine Indicator" start="174" length="1" type="AN" />
+        <field id="28" name="NRCT" description="Net Reporting Calculation Type" start="175" length="1" type="AN" />
+        <field id="29" name="NRMI" description="Net Reporting Method Indicator" start="176" length="1" type="AN" />
+        <field id="30" name="TIIS" description="Time of Issue" start="177" length="4" type="AN" />
+        <field id="31" name="RDII" description="Routing Domestic/International Indicator" start="181" length="1" type="AN" />
+        <field id="32" name="CLID" description="Client Identification" start="182" length="15" type="AN" />
+        <field id="33" name="BEOT" description="Booking Entity Outlet Type" start="197" length="1" type="AN" />
+        <field id="34" name="BOON" description="Booking Agency/Location Number" start="198" length="8" type="AN" />
+        <field id="35" name="BISO" description="Booking Location ISO Country Code" start="206" length="2" type="AN" />
+        <field id="36" name="POSA" description="Point of Sale" start="208" length="5" type="AN" />
+        <field id="37" name="POIS" description="Point of Ticket Issuance" start="213" length="5" type="AN" />
+        <field id="38" name="TISO" description="Ticketing Entity-ISO Country Code" start="218" length="2" type="AN" />
+        <field id="39" name="SCNF" description="Ticketing Entity-Stock Control Number From" start="220" length="16" type="AN" />
+        <field id="40" name="SCNT" description="Ticketing Entity-Stock Control Number To" start="236" length="4" type="AN" />
+        <field id="41" name="ALTP" description="Second Stock Set-Approved Location Outlet Type" start="240" length="1" type="AN" />
+        <field id="42" name="ALNC" description="Second Stock Set-Approved Location Numeric Code" start="241" length="8" type="N" />
+        <field id="43" name="TISO" description="Second Stock Set-Approved Location ISO Country Code" start="249" length="2" type="AN" />
+        <field id="44" name="SCNF" description="Second Stock Set-Stock Control Number From" start="251" length="16" type="AN" />
+        <field id="45" name="SCNT" description="Second Stock Set-Stock Control Number To" start="267" length="4" type="AN" />
+        <field id="46" name="PLAT" description="Plating Carrier Address Identifier" start="271" length="1" type="AN" />
+        <field id="47" name="AGRE" description="NFP Agreement Type" start="272" length="1" type="AN" />
+        <field id="48" name="PVDR" description="Record Provider" start="273" length="1" type="AN" />
+        <field id="49" name="ACOS" description="ATPCO derived country of sale" start="274" length="3" type="AN" />
+        <field id="50" name="FILL" description="Filler" start="277" length="36" type="AN" />
+        <field id="51" name="FVFT" description="Fare Verified Fail Type" start="313" length="2" type="AN" />
+        <field id="52" name="FVFT" description="Fare Verified Fail Type" start="315" length="2" type="AN" />
+        <field id="53" name="FVFT" description="Fare Verified Fail Type" start="317" length="2" type="AN" />
+        <field id="54" name="FVFT" description="Fare Verified Fail Type" start="319" length="2" type="AN" />
+        <field id="55" name="FVFT" description="Fare Verified Fail Type" start="321" length="2" type="AN" />
+        <field id="56" name="FVFT" description="Fare Verified Fail Type" start="323" length="2" type="AN" />
+        <field id="57" name="FVFT" description="Fare Verified Fail Type" start="325" length="2" type="AN" />
+        <field id="58" name="FVFT" description="Fare Verified Fail Type" start="327" length="2" type="AN" />
+        <field id="59" name="FVFT" description="Fare Verified Fail Type" start="329" length="2" type="AN" />
+        <field id="60" name="FVFT" description="Fare Verified Fail Type" start="331" length="2" type="AN" />
+        <field id="61" name="BAID" description="Booking Agent Identification" start="333" length="7" type="AN" />
+        <field id="62" name="INLS" description="International Sale Indicator" start="340" length="4" type="AN" />
+        <field id="63" name="STAT" description="Statistical Code" start="344" length="3" type="AN" />
+        <field id="64" name="RTIT" description="Round Trip Indicator" start="347" length="1" type="AN" />
+        <field id="65" name="FCRI" description="Fare Calculation Reporting Indicator" start="348" length="1" type="AN" />
+        <field id="66" name="ETKI" description="Electronic Ticket Indicator" start="349" length="2" type="AN" />
+        <field id="67" name="NOTE" description="Notice Indicator" start="351" length="1" type="AN" />
+        <field id="68" name="ADTG" description="Agency Direct Sales Tag" start="352" length="1" type="AN" />
+        <field id="69" name="FILL" description="Filler" start="353" length="1" type="AN" />
+        <field id="70" name="DATA" description="Data Source Code" start="354" length="4" type="AN" />
+        <field id="71" name="VOIN" description="Voluntary/Involuntary Code" start="358" length="1" type="AN" />
+        <field id="72" name="ESAC" description="Settlement Authorization Code" start="359" length="14" type="AN" />
+        <field id="73" name="ATCS" description="ATPCO Codeshare Indicator" start="373" length="1" type="AN" />
+        <field id="74" name="TACN" description="Ticketing Airline Code Number" start="374" length="5" type="AN" />
+        <field id="75" name="ISOC" description="ISO Country Code" start="379" length="2" type="AN" />
+        <field id="76" name="SASI" description="System Provider Identifier" start="381" length="4" type="AN" />
+        <field id="77" name="EINV" description="E-ticket Involuntary Indicator" start="385" length="1" type="AN" />
+        <field id="78" name="EEND" description="E-ticket non-Endorsable Indicator" start="386" length="1" type="AN" />
+        <field id="79" name="EREF" description="E-ticket non-Refundable Indicator" start="387" length="1" type="AN" />
+        <field id="80" name="TKOF" description="Ticketing Office" start="388" length="9" type="AN" />
+        <field id="81" name="CONS" description="Constant Value" start="397" length="3" type="AN" />
+        <field id="82" name="FVDT" description="Fare Verified Discrepancy Type" start="400" length="1" type="AN" />
+    </record>
+
+    <record name="02" alias="R02" description="Marketing Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="PCTY" description="Pseudo City Code" start="43" length="6" type="AN" />
+        <field id="8" name="DPCR" description="Date of PNR Creation" start="49" length="8" type="D" />
+        <field id="9" name="TWAV" description="Ticket Waiver Code" start="57" length="14" type="AN" />
+        <field id="10" name="FILL" description="Filler" start="71" length="16" type="AN" />
+        <field id="11" name="TELE" description="Telephone Number" start="87" length="20" type="AN" />
+        <field id="12" name="SPIN" description="Sponsor Information" start="107" length="34" type="AN" />
+        <field id="13" name="ACON" description="Airline Confirmation Number" start="141" length="20" type="AN" />
+        <field id="14" name="FILL" description="Filler" start="161" length="6" type="AN" />
+        <field id="15" name="TTIS" description="Time of Ticketing Issue" start="167" length="4" type="T" />
+        <field id="16" name="TBIS" description="Time of Booking" start="171" length="4" type="T" />
+        <field id="17" name="SGDT" description="Coupon #1 Segment Booking Date" start="175" length="5" type="AN" />
+        <field id="18" name="APNR" description="Coupon #1 Airline PNR Reference" start="180" length="13" type="AN" />
+        <field id="19" name="FFRF" description="Coupon #1 Frequent Flyer Number" start="193" length="16" type="AN" />
+        <field id="20" name="WAIV" description="Coupon #1 Waiver Code" start="209" length="6" type="AN" />
+        <field id="21" name="SGDT" description="Coupon #2 Segment Booking Date" start="215" length="5" type="AN" />
+        <field id="22" name="APNR" description="Coupon #2 Airline PNR Reference" start="220" length="13" type="AN" />
+        <field id="23" name="FFRF" description="Coupon #2 Frequent Flyer Number" start="233" length="16" type="AN" />
+        <field id="24" name="WAIV" description="Coupon #2 Waiver Code" start="249" length="6" type="AN" />
+        <field id="25" name="SGDT" description="Coupon #3 Segment Booking Date" start="255" length="5" type="AN" />
+        <field id="26" name="APNR" description="Coupon #3 Airline PNR Reference" start="260" length="13" type="AN" />
+        <field id="27" name="FFRF" description="Coupon #3 Frequent Flyer Number" start="273" length="16" type="AN" />
+        <field id="28" name="WAIV" description="Coupon #3 Waiver Code" start="289" length="6" type="AN" />
+        <field id="29" name="SGDT" description="Coupon #4 Segment Booking Date" start="295" length="5" type="AN" />
+        <field id="30" name="APNR" description="Coupon #4 Airline PNR Reference" start="300" length="13" type="AN" />
+        <field id="31" name="FFRF" description="Coupon #4 Frequent Flyer Number" start="313" length="16" type="AN" />
+        <field id="32" name="WAIV" description="Coupon #4 Waiver Code" start="329" length="6" type="AN" />
+        <field id="33" name="RTCN" description="Reversal TCN Number" start="335" length="15" type="AN" />
+        <field id="34" name="RTND" description="Reversal TCN Check Digit" start="350" length="1" type="AN" />
+        <field id="35" name="RTIS" description="Reversal Date of Issue" start="351" length="8" type="D" />
+        <field id="36" name="RTNR" description="Reversal PNR" start="359" length="13" type="AN" />
+        <field id="37" name="RTAC" description="Reversal Settlement Authorization Code" start="372" length="14" type="AN" />
+        <field id="38" name="BKOF" description="Booking Office" start="386" length="9" type="AN" />
+        <field id="39" name="ERRC" description="Error/Source Code" start="395" length="3" type="AN" />
+        <field id="40" name="SUPD" description="Support Document Indicator" start="398" length="2" type="AN" />
+        <field id="41" name="FILL" description="Filler" start="400" length="1" type="AN" />
+    </record>
+
+    <record name="03" alias="R03" description="Additional Sales Data Record">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="FILL" description="Filler" start="43" length="10" type="AN" />
+        <field id="8" name="TODC" description="True Origin/Destination City Codes" start="53" length="10" type="AN" />
+        <field id="9" name="FILL" description="Filler" start="63" length="19" type="AN" />
+        <field id="10" name="FARE" description="Fare" start="82" length="11" type="AN" />
+        <field id="11" name="EQFR" description="Equivalent Fare Paid" start="93" length="11" type="AN" />
+        <field id="12" name="TAXA" description="Tax" start="104" length="11" type="AN" />
+        <field id="13" name="TAXA" description="Tax" start="115" length="11" type="AN" />
+        <field id="14" name="TAXA" description="Tax" start="126" length="11" type="AN" />
+        <field id="15" name="TOTL" description="Total" start="137" length="11" type="AN" />
+        <field id="16" name="TOUR" description="Tour Code" start="148" length="15" type="AN" />
+        <field id="17" name="PAST" description="Passenger Type" start="163" length="3" type="AN" />
+        <field id="18" name="PXDA" description="Passenger Specific Data" start="166" length="49" type="AN" />
+        <field id="19" name="ORIN" description="Original Issue Information" start="215" length="32" type="AN" />
+        <field id="20" name="ENRS" description="Endorsements/Restrictions" start="247" length="147" type="AN" />
+        <field id="21" name="DOBR" description="Date of Birth" start="394" length="7" type="AN" />
+    </record>
+
+    <record name="04" alias="R04" description="Financial Record">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="TDAM" description="Ticket/Document Amount" start="43" length="11" type="N" />
+        <field id="8" name="FNUM" description="Fare Amount" start="54" length="11" type="N" />
+        <field id="9" name="CUTP" alias="CUTP_FNUM" description="Currency of Fare" start="65" length="4" type="AN" />
+        <field id="10" name="EQFN" description="Equivalent Fare Paid" start="69" length="11" type="N" />
+        <field id="11" name="CUTP" alias="CUTP_EQFN" description="Currency of Equivalent Fare Paid" start="80" length="4" type="AN" />
+        <field id="12" name="COTP" description="Commission Type" start="84" length="6" type="AN" />
+        <field id="13" name="CORT" description="Commission Rate" start="90" length="5" type="N" />
+        <field id="14" name="COAM" description="Commission Amount" start="95" length="11" type="N" />
+        <field id="15" name="COTP" description="Commission Type" start="106" length="6" type="AN" />
+        <field id="16" name="CORT" description="Commission Rate" start="112" length="5" type="N" />
+        <field id="17" name="COAM" description="Commission Amount" start="117" length="11" type="N" />
+        <field id="18" name="COTP" description="Commission Type" start="128" length="6" type="AN" />
+        <field id="19" name="CORT" description="Commission Rate" start="134" length="5" type="N" />
+        <field id="20" name="COAM" description="Commission Amount" start="139" length="11" type="N" />
+        <field id="21" name="EFRT" description="Effective Commission Rate" start="150" length="5" type="N" />
+        <field id="22" name="EFCO" description="Effective Commission Amount" start="155" length="11" type="N" />
+        <field id="23" name="NRID" description="Net Reporting Indicator" start="166" length="2" type="AN" />
+        <field id="24" name="AEBA" description="Amount Entered by Agent" start="168" length="11" type="N" />
+        <field id="25" name="APBC" description="Amount Paid by Customer" start="179" length="11" type="N" />
+        <field id="26" name="ETTS" description="Exchanged Ticket Total Sale Amount" start="190" length="11" type="N" />
+        <field id="27" name="TMFT" description="Tax/Miscellaneous Fee Type #1" start="201" length="8" type="AN" />
+        <field id="28" name="TMFA" description="Tax/Miscellaneous Fee Amount #1" start="209" length="11" type="N" />
+        <field id="29" name="TMFT" description="Tax/Miscellaneous Fee Type #2" start="220" length="8" type="AN" />
+        <field id="30" name="TMFA" description="Tax/Miscellaneous Fee Amount #2" start="228" length="11" type="N" />
+        <field id="31" name="TMFT" description="Tax/Miscellaneous Fee Type #3" start="239" length="8" type="AN" />
+        <field id="32" name="TMFA" description="Tax/Miscellaneous Fee Amount #3" start="247" length="11" type="N" />
+        <field id="33" name="TMFT" description="Tax/Miscellaneous Fee Type #4" start="258" length="8" type="AN" />
+        <field id="34" name="TMFA" description="Tax/Miscellaneous Fee Amount #4" start="266" length="11" type="N" />
+        <field id="35" name="TMFT" description="Tax/Miscellaneous Fee Type #5" start="277" length="8" type="AN" />
+        <field id="36" name="TMFA" description="Tax/Miscellaneous Fee Amount #5" start="285" length="11" type="N" />
+        <field id="37" name="TMFT" description="Tax/Miscellaneous Fee Type #6" start="296" length="8" type="AN" />
+        <field id="38" name="TMFA" description="Tax/Miscellaneous Fee Amount #6" start="304" length="11" type="N" />
+        <field id="39" name="TMFT" description="Tax/Miscellaneous Fee Type #7" start="315" length="8" type="AN" />
+        <field id="40" name="TMFA" description="Tax/Miscellaneous Fee Amount #7" start="323" length="11" type="N" />
+        <field id="41" name="TMFT" description="Tax/Miscellaneous Fee Type #8" start="334" length="8" type="AN" />
+        <field id="42" name="TMFA" description="Tax/Miscellaneous Fee Amount #8" start="342" length="11" type="N" />
+        <field id="43" name="TMFT" description="Tax/Miscellaneous Fee Type #9" start="353" length="8" type="AN" />
+        <field id="44" name="TMFA" description="Tax/Miscellaneous Fee Amount #9" start="361" length="11" type="N" />
+        <field id="45" name="TCIN" description="Tax on Commission" start="372" length="1" type="AN" />
+        <field id="46" name="NTFA" description="Net Fare Amount" start="373" length="11" type="N" />
+        <field id="47" name="CUTP" description="Currency Type" start="384" length="4" type="AN" />
+        <field id="48" name="REMT" description="Remittance Amount" start="388" length="11" type="N" />
+        <field id="49" name="PVDR" description="Record Provider" start="399" length="1" type="AN" />
+        <field id="50" name="FCID" description="Fare Calculation Set Identifier" start="400" length="1" type="AN" />
+    </record>
+
+    <record name="05" alias="R05" description="Itinerary Record">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="COUN" description="Coupon Number" start="43" length="1" type="AN" />
+        <field id="8" name="CABI" description="Sold Passenger Cabin" start="44" length="1" type="AN" />
+        <field id="9" name="STPO" description="Coupon Stopover Code" start="45" length="1" type="AN" />
+        <field id="10" name="ORAC" description="Coupon Origin Airport/City Code" start="46" length="5" type="AN" />
+        <field id="11" name="DSTC" description="Coupon Destination Airport/City Code" start="51" length="5" type="AN" />
+        <field id="12" name="OCAR" description="Coupon Operating Carrier" start="56" length="4" type="AN" />
+        <field id="13" name="MCAR" description="Coupon Marketing Carrier" start="60" length="4" type="AN" />
+        <field id="14" name="OFTN" description="Coupon Operating Flight Number" start="64" length="5" type="AN" />
+        <field id="15" name="MFTN" description="Coupon Marketing Flight Number" start="69" length="5" type="AN" />
+        <field id="16" name="RBKD" description="Coupon Ticketing Class of Service" start="74" length="2" type="AN" />
+        <field id="17" name="BCLS" description="Coupon Booking Class of Service" start="76" length="2" type="AN" />
+        <field id="18" name="FTDA" description="Coupon Flight Date" start="78" length="5" type="AN" pattern="(\d{2}[A-Z]{3}|VOID)" />
+        <field id="19" name="NBDA" description="Coupon Not Valid Before Date" start="83" length="5" type="AN" />
+        <field id="20" name="NADA" description="Coupon Not Valid After Date" start="88" length="5" type="AN" />
+        <field id="21" name="FTDT" description="Coupon Flight Departure Time" start="93" length="5" type="AN" />
+        <field id="22" name="FTAT" description="Coupon Flight Arrival Time" start="98" length="5" type="AN" />
+        <field id="23" name="FBST" description="Coupon Flight Booking Status" start="103" length="2" type="AN" />
+        <field id="24" name="FBAL" description="Coupon Free Baggage Allowance" start="105" length="3" type="AN" />
+        <field id="25" name="FBTD" description="Coupon Fare Basis/Tkt Designator" start="108" length="15" type="AN" />
+        <field id="26" name="SCFD" description="Flight Distance" start="123" length="5" type="N" />
+        <field id="27" name="SCEQ" description="Equipment Code" start="128" length="3" type="AN" />
+        <field id="28" name="FILL" description="Filler" start="131" length="1" type="AN" />
+        <field id="29" name="COUN" description="Coupon Number" start="132" length="1" type="AN" />
+        <field id="30" name="CABI" description="Sold Passenger Cabin" start="133" length="1" type="AN" />
+        <field id="31" name="STPO" description="Coupon Stopover Code" start="134" length="1" type="AN" />
+        <field id="32" name="ORAC" description="Coupon Origin Airport/City Code" start="135" length="5" type="AN" />
+        <field id="33" name="DSTC" description="Coupon Destination Airport/City Code" start="140" length="5" type="AN" />
+        <field id="34" name="OCAR" description="Coupon Operating Carrier" start="145" length="4" type="AN" />
+        <field id="35" name="MCAR" description="Coupon Marketing Carrier" start="149" length="4" type="AN" />
+        <field id="36" name="OFTN" description="Coupon Operating Flight Number" start="153" length="5" type="AN" />
+        <field id="37" name="MFTN" description="Coupon Marketing Flight Number" start="158" length="5" type="AN" />
+        <field id="38" name="RBKD" description="Coupon Ticketing Class of Service" start="163" length="2" type="AN" />
+        <field id="39" name="BCLS" description="Coupon Booking Class of Service" start="165" length="2" type="AN" />
+        <field id="40" name="FTDA" description="Coupon Flight Date" start="167" length="5" type="AN" />
+        <field id="41" name="NBDA" description="Coupon Not Valid Before Date" start="172" length="5" type="AN" />
+        <field id="42" name="NADA" description="Coupon Not Valid After Date" start="177" length="5" type="AN" />
+        <field id="43" name="FTDT" description="Coupon Flight Departure Time" start="182" length="5" type="AN" />
+        <field id="44" name="FTAT" description="Coupon Flight Arrival Time" start="187" length="5" type="AN" />
+        <field id="45" name="FBST" description="Coupon Flight Booking Status" start="192" length="2" type="AN" />
+        <field id="46" name="FBAL" description="Coupon Free Baggage Allowance" start="194" length="3" type="AN" />
+        <field id="47" name="FBTD" description="Coupon Fare Basis/Tkt Designator" start="197" length="15" type="AN" />
+        <field id="48" name="SCFD" description="Flight Distance" start="212" length="5" type="N" />
+        <field id="49" name="SCEQ" description="Equipment Code" start="217" length="3" type="AN" />
+        <field id="50" name="FILL" description="Filler" start="220" length="1" type="AN" />
+        <field id="51" name="COUN" description="Coupon Number" start="221" length="1" type="AN" />
+        <field id="52" name="CABI" description="Sold Passenger Cabin" start="222" length="1" type="AN" />
+        <field id="53" name="STPO" description="Coupon Stopover Code" start="223" length="1" type="AN" />
+        <field id="54" name="ORAC" description="Coupon Origin Airport/City Code" start="224" length="5" type="AN" />
+        <field id="55" name="DSTC" description="Coupon Destination Airport/City Code" start="229" length="5" type="AN" />
+        <field id="56" name="OCAR" description="Coupon Operating Carrier" start="234" length="4" type="AN" />
+        <field id="57" name="MCAR" description="Coupon Marketing Carrier" start="238" length="4" type="AN" />
+        <field id="58" name="OFTN" description="Coupon Operating Flight Number" start="242" length="5" type="AN" />
+        <field id="59" name="MFTN" description="Coupon Marketing Flight Number" start="247" length="5" type="AN" />
+        <field id="60" name="RBKD" description="Coupon Ticketing Class of Service" start="252" length="2" type="AN" />
+        <field id="61" name="BCLS" description="Coupon Booking Class of Service" start="254" length="2" type="AN" />
+        <field id="62" name="FTDA" description="Coupon Flight Date" start="256" length="5" type="AN" />
+        <field id="63" name="NBDA" description="Coupon Not Valid Before Date" start="261" length="5" type="AN" />
+        <field id="64" name="NADA" description="Coupon Not Valid After Date" start="266" length="5" type="AN" />
+        <field id="65" name="FTDT" description="Coupon Flight Departure Time" start="271" length="5" type="AN" />
+        <field id="66" name="FTAT" description="Coupon Flight Arrival Time" start="276" length="5" type="AN" />
+        <field id="67" name="FBST" description="Coupon Flight Booking Status" start="281" length="2" type="AN" />
+        <field id="68" name="FBAL" description="Coupon Free Baggage Allowance" start="283" length="3" type="AN" />
+        <field id="69" name="FBTD" description="Coupon Fare Basis/Tkt Designator" start="286" length="15" type="AN" />
+        <field id="70" name="SCFD" description="Flight Distance" start="301" length="5" type="N" />
+        <field id="71" name="SCEQ" description="Equipment Code" start="306" length="3" type="AN" />
+        <field id="72" name="FILL" description="Filler" start="309" length="1" type="AN" />
+        <field id="73" name="COUN" description="Coupon Number" start="310" length="1" type="AN" />
+        <field id="74" name="CABI" description="Sold Passenger Cabin" start="311" length="1" type="AN" />
+        <field id="75" name="STPO" description="Coupon Stopover Code" start="312" length="1" type="AN" />
+        <field id="76" name="ORAC" description="Coupon Origin Airport/City Code" start="313" length="5" type="AN" />
+        <field id="77" name="DSTC" description="Coupon Destination Airport/City Code" start="318" length="5" type="AN" />
+        <field id="78" name="OCAR" description="Coupon Operating Carrier" start="323" length="4" type="AN" />
+        <field id="79" name="MCAR" description="Coupon Marketing Carrier" start="327" length="4" type="AN" />
+        <field id="80" name="OFTN" description="Coupon Operating Flight Number" start="331" length="5" type="AN" />
+        <field id="81" name="MFTN" description="Coupon Marketing Flight Number" start="336" length="5" type="AN" />
+        <field id="82" name="RBKD" description="Coupon Ticketing Class of Service" start="341" length="2" type="AN" />
+        <field id="83" name="BCLS" description="Coupon Booking Class of Service" start="343" length="2" type="AN" />
+        <field id="84" name="FTDA" description="Coupon Flight Date" start="345" length="5" type="AN" />
+        <field id="85" name="NBDA" description="Coupon Not Valid Before Date" start="350" length="5" type="AN" />
+        <field id="86" name="NADA" description="Coupon Not Valid After Date" start="355" length="5" type="AN" />
+        <field id="87" name="FTDT" description="Coupon Flight Departure Time" start="360" length="5" type="AN" />
+        <field id="88" name="FTAT" description="Coupon Flight Arrival Time" start="365" length="5" type="AN" />
+        <field id="89" name="FBST" description="Coupon Flight Booking Status" start="370" length="2" type="AN" />
+        <field id="90" name="FBAL" description="Coupon Free Baggage Allowance" start="372" length="3" type="AN" />
+        <field id="91" name="FBTD" description="Coupon Fare Basis/Tkt Designator" start="375" length="15" type="AN" />
+        <field id="92" name="SCFD" description="Flight Distance" start="390" length="5" type="N" />
+        <field id="93" name="SCEQ" description="Equipment Code" start="395" length="3" type="AN" />
+        <field id="94" name="FILL" description="Filler" start="398" length="3" type="AN" />
+    </record>
+
+    <record name="06" alias="R06" description="NFP Proration Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="CPET" description="Central Prorate Engine Tag" start="43" length="1" type="AN" />
+        <field id="8" name="SRCE" description="Source of Data" start="44" length="3" type="AN" />
+        <field id="9" name="MRAT" description="Month of IATA 5-day Rate" start="47" length="4" type="AN" />
+        <field id="10" name="NPRC" description="NFP Reason Code" start="51" length="2" type="AN" />
+        <field id="11" name="FILL" description="Filler" start="53" length="15" type="AN" />
+        <field id="12" name="COUN" description="Coupon Number" start="68" length="1" type="AN" />
+        <field id="13" name="OPMI" description="Original Pricing Method Indicator Code" start="69" length="1" type="AN" />
+        <field id="14" name="FCNO" description="Fare Component Number" start="70" length="2" type="N" />
+        <field id="15" name="PROT" description="Settlement Coupon Proration Type" start="72" length="1" type="AN" />
+        <field id="16" name="PROV" description="Settlement Coupon Proration Value" start="73" length="11" type="N" />
+        <field id="17" name="CUTP" description="Settlement Coupon Currency Type" start="84" length="4" type="AN" />
+        <field id="18" name="PROC" description="Settlement Coupon Proration Code" start="88" length="3" type="AN" />
+        <field id="19" name="CPBC" description="Settlement Coupon Base Currency" start="91" length="4" type="AN" />
+        <field id="20" name="PROT" description="Industry Coupon Proration Type" start="95" length="1" type="AN" />
+        <field id="21" name="PROV" description="Industry Coupon Proration Value" start="96" length="11" type="N" />
+        <field id="22" name="CUTP" description="Industry Coupon Currency Type" start="107" length="4" type="AN" />
+        <field id="23" name="PROC" description="Industry Coupon Proration Code" start="111" length="3" type="AN" />
+        <field id="24" name="CPBC" description="Industry Coupon Base Currency" start="114" length="4" type="AN" />
+        <field id="25" name="SURC" description="Settlement Surcharge Share Value" start="118" length="6" type="N" />
+        <field id="26" name="SRVC" description="Settlement Service Fee Share Value" start="124" length="6" type="N" />
+        <field id="27" name="POTI" description="Point of Turnaround Indicator" start="130" length="1" type="AN" />
+        <field id="28" name="FILL" description="Filler" start="131" length="10" type="AN" />
+        <field id="29" name="MTCH" description="Coupon Value Match Tag" start="141" length="1" type="AN" />
+        <field id="30" name="FANF" description="First and Final™ Tag" start="142" length="1" type="AN" />
+        <field id="31" name="OPER" description="Operating Carrier" start="143" length="3" type="AN" />
+        <field id="32" name="AGRI" description="Agreement Indicator" start="146" length="2" type="AN" />
+        <field id="33" name="FILL" description="Filler" start="148" length="3" type="AN" />
+        <field id="34" name="COUN" description="Coupon Number" start="151" length="1" type="AN" />
+        <field id="35" name="OPMI" description="Original Pricing Method Indicator Code" start="152" length="1" type="AN" />
+        <field id="36" name="FCNO" description="Fare Component Number" start="153" length="2" type="N" />
+        <field id="37" name="PROT" description="Settlement Coupon Proration Type" start="155" length="1" type="AN" />
+        <field id="38" name="PROV" description="Settlement Coupon Proration Value" start="156" length="11" type="N" />
+        <field id="39" name="CUTP" description="Settlement Coupon Currency Type" start="167" length="4" type="AN" />
+        <field id="40" name="PROC" description="Settlement Coupon Proration Code" start="171" length="3" type="AN" />
+        <field id="41" name="CPBC" description="Settlement Coupon Base Currency" start="174" length="4" type="AN" />
+        <field id="42" name="PROT" description="Industry Coupon Proration Type" start="178" length="1" type="AN" />
+        <field id="43" name="PROV" description="Industry Coupon Proration Value" start="179" length="11" type="N" />
+        <field id="44" name="CUTP" description="Industry Coupon Currency Type" start="190" length="4" type="AN" />
+        <field id="45" name="PROC" description="Industry Coupon Proration Code" start="194" length="3" type="AN" />
+        <field id="46" name="CPBC" description="Industry Coupon Base Currency" start="197" length="4" type="AN" />
+        <field id="47" name="SURC" description="Settlement Surcharge Share Value" start="201" length="6" type="N" />
+        <field id="48" name="SRVC" description="Settlement Service Fee Share Value" start="207" length="6" type="N" />
+        <field id="49" name="POTI" description="Point of Turnaround Indicator" start="213" length="1" type="AN" />
+        <field id="50" name="FILL" description="Filler" start="214" length="10" type="AN" />
+        <field id="51" name="MTCH" description="Coupon Value Match Tag" start="224" length="1" type="AN" />
+        <field id="52" name="FANF" description="First and Final™ Tag" start="225" length="1" type="AN" />
+        <field id="53" name="OPER" description="Operating Carrier" start="226" length="3" type="AN" />
+        <field id="54" name="AGRI" description="Agreement Indicator" start="229" length="2" type="AN" />
+        <field id="55" name="FILL" description="Filler" start="231" length="3" type="AN" />
+        <field id="56" name="COUN" description="Coupon Number" start="234" length="1" type="AN" />
+        <field id="57" name="OPMI" description="Original Pricing Method Indicator Code" start="235" length="1" type="AN" />
+        <field id="58" name="FCNO" description="Fare Component Number" start="236" length="2" type="N" />
+        <field id="59" name="PROT" description="Settlement Coupon Proration Type" start="238" length="1" type="AN" />
+        <field id="60" name="PROV" description="Settlement Coupon Proration Value" start="239" length="11" type="N" />
+        <field id="61" name="CUTP" description="Settlement Coupon Currency Type" start="250" length="4" type="AN" />
+        <field id="62" name="PROC" description="Settlement Coupon Proration Code" start="254" length="3" type="AN" />
+        <field id="63" name="CPBC" description="Settlement Coupon Base Currency" start="257" length="4" type="AN" />
+        <field id="64" name="PROT" description="Industry Coupon Proration Type" start="261" length="1" type="AN" />
+        <field id="65" name="PROV" description="Industry Coupon Proration Value" start="262" length="11" type="N" />
+        <field id="66" name="CUTP" description="Industry Coupon Currency Type" start="273" length="4" type="AN" />
+        <field id="67" name="PROC" description="Industry Coupon Proration Code" start="277" length="3" type="AN" />
+        <field id="68" name="CPBC" description="Industry Coupon Base Currency" start="280" length="4" type="AN" />
+        <field id="69" name="SURC" description="Settlement Surcharge Share Value" start="284" length="6" type="N" />
+        <field id="70" name="SRVC" description="Settlement Service Fee Share Value" start="290" length="6" type="N" />
+        <field id="71" name="POTI" description="Point of Turnaround Indicator" start="296" length="1" type="AN" />
+        <field id="72" name="FILL" description="Filler" start="297" length="10" type="AN" />
+        <field id="73" name="MTCH" description="Coupon Value Match Tag" start="307" length="1" type="AN" />
+        <field id="74" name="FANF" description="First and Final™ Tag" start="308" length="1" type="AN" />
+        <field id="75" name="OPER" description="Operating Carrier" start="309" length="3" type="AN" />
+        <field id="76" name="AGRI" description="Agreement Indicator" start="312" length="2" type="AN" />
+        <field id="77" name="FILL" description="Filler" start="314" length="3" type="AN" />
+        <field id="78" name="COUN" description="Coupon Number" start="317" length="1" type="AN" />
+        <field id="79" name="OPMI" description="Original Pricing Method Indicator Code" start="318" length="1" type="AN" />
+        <field id="80" name="FCNO" description="Fare Component Number" start="319" length="2" type="N" />
+        <field id="81" name="PROT" description="Settlement Coupon Proration Type" start="321" length="1" type="AN" />
+        <field id="82" name="PROV" description="Settlement Coupon Proration Value" start="322" length="11" type="N" />
+        <field id="83" name="CUTP" description="Settlement Coupon Currency Type" start="333" length="4" type="AN" />
+        <field id="84" name="PROC" description="Settlement Coupon Proration Code" start="337" length="3" type="AN" />
+        <field id="85" name="CPBC" description="Settlement Coupon Base Currency" start="340" length="4" type="AN" />
+        <field id="86" name="PROT" description="Industry Coupon Proration Type" start="344" length="1" type="AN" />
+        <field id="87" name="PROV" description="Industry Coupon Proration Value" start="345" length="11" type="N" />
+        <field id="88" name="CUTP" description="Industry Coupon Currency Type" start="356" length="4" type="AN" />
+        <field id="89" name="PROC" description="Industry Coupon Proration Code" start="360" length="3" type="AN" />
+        <field id="90" name="CPBC" description="Industry Coupon Base Currency" start="363" length="4" type="AN" />
+        <field id="91" name="SURC" description="Settlement Surcharge Share Value" start="367" length="6" type="N" />
+        <field id="92" name="SRVC" description="Settlement Service Fee Share Value" start="373" length="6" type="N" />
+        <field id="93" name="POTI" description="Point of Turnaround Indicator" start="379" length="1" type="AN" />
+        <field id="94" name="FILL" description="Filler" start="380" length="10" type="AN" />
+        <field id="95" name="MTCH" description="Coupon Value Match Tag" start="390" length="1" type="AN" />
+        <field id="96" name="FANF" description="First and Final™ Tag" start="391" length="1" type="AN" />
+        <field id="97" name="OPER" description="Operating Carrier" start="392" length="3" type="AN" />
+        <field id="98" name="AGRI" description="Agreement Indicator" start="395" length="2" type="AN" />
+        <field id="99" name="INTR" description="Internal ATPCO Use Only" start="397" length="3" type="N" />
+        <field id="100" name="UNPL" description="Unplanned Lift Indicator" start="400" length="1" type="AN" />
+    </record>
+
+    <record name="07" alias="R07" description="Form of Payment Record">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="FPTP" description="FOP #1 Form of Payment Type" start="43" length="10" type="AN" />
+        <field id="8" name="FPAM" description="FOP #1 Form of Payment Amount" start="53" length="11" type="N" />
+        <field id="9" name="FPAC" description="FOP #1 Form of Payment Account Number" start="64" length="19" type="AN" />
+        <field id="10" name="EXDA" description="FOP #1 Expiry Date" start="83" length="4" type="AN" />
+        <field id="11" name="SAPP" description="FOP #1 Approval Source" start="87" length="1" type="AN" />
+        <field id="12" name="APLC" description="FOP #1 Approval Code" start="88" length="6" type="AN" />
+        <field id="13" name="EXPC" description="FOP #1 Extended Payment Code" start="94" length="3" type="AN" />
+        <field id="14" name="CSTF" description="FOP #1 Customer File Reference" start="97" length="27" type="AN" />
+        <field id="15" name="CCTI" description="FOP #1 Credit Card Transaction Info" start="124" length="25" type="AN" />
+        <field id="16" name="AUTA" description="FOP #1 Authorized Amount" start="149" length="11" type="N" />
+        <field id="17" name="CUTP" description="FOP #1 Currency of Authorized Amount" start="160" length="4" type="AN" />
+        <field id="18" name="AVCD" description="FOP #1 Credit Card Address Verification" start="164" length="2" type="AN" />
+        <field id="19" name="FPTP" description="FOP #2 Form of Payment Type" start="166" length="10" type="AN" />
+        <field id="20" name="FPAM" description="FOP #2 Form of Payment Amount" start="176" length="11" type="N" />
+        <field id="21" name="FPAC" description="FOP #2 Form of Payment Account Number" start="187" length="19" type="AN" />
+        <field id="22" name="EXDA" description="FOP #2 Expiry Date" start="206" length="4" type="AN" />
+        <field id="23" name="SAPP" description="FOP #2 Approval Source" start="210" length="1" type="AN" />
+        <field id="24" name="APLC" description="FOP #2 Approval Code" start="211" length="6" type="AN" />
+        <field id="25" name="EXPC" description="FOP #2 Extended Payment Code" start="217" length="3" type="AN" />
+        <field id="26" name="CSTF" description="FOP #2 Customer File Reference" start="220" length="27" type="AN" />
+        <field id="27" name="CCTI" description="FOP #2 Credit Card Transaction Info" start="247" length="25" type="AN" />
+        <field id="28" name="AUTA" description="FOP #2 Authorized Amount" start="272" length="11" type="N" />
+        <field id="29" name="CUTP" description="FOP #2 Currency of Authorized Amount" start="283" length="4" type="AN" />
+        <field id="30" name="AVCD" description="FOP #2 Credit Card Address Verification" start="287" length="2" type="AN" />
+        <field id="31" name="FPIN" description="Form of Payment Information-Line #1" start="289" length="50" type="AN" />
+        <field id="32" name="FPIN" description="Form of Payment Information-Line #2" start="339" length="50" type="AN" />
+        <field id="33" name="FILL" description="Filler" start="389" length="10" type="AN" />
+        <field id="34" name="INTR" description="Internal ATPCO Use Only" start="399" length="2" type="AN" />
+    </record>
+
+    <record name="08" alias="R08" description="Fare Calculation Record">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="FCPI" description="Fare Calculation Pricing Indicator" start="43" length="2" type="AN" />
+        <field id="8" name="FRCA" description="Fare Calculation Area" start="45" length="87" type="AN" />
+        <field id="9" name="FRCS" description="Fare Calculation Sequence Number" start="132" length="1" type="N" />
+        <field id="10" name="FRCA" description="Fare Calculation Area" start="133" length="87" type="AN" />
+        <field id="11" name="FRCS" description="Fare Calculation Sequence Number" start="220" length="1" type="N" />
+        <field id="12" name="FRCA" description="Fare Calculation Area" start="221" length="87" type="AN" />
+        <field id="13" name="FRCS" description="Fare Calculation Sequence Number" start="308" length="1" type="N" />
+        <field id="14" name="FRCA" description="Fare Calculation Area" start="309" length="87" type="AN" />
+        <field id="15" name="FRCS" description="Fare Calculation Sequence Number" start="396" length="1" type="N" />
+        <field id="16" name="PVDR" description="Record Provider" start="397" length="1" type="AN" />
+        <field id="17" name="FCID" description="Fare Calculation Set Identifier" start="398" length="1" type="AN" />
+        <field id="18" name="INTR" description="Internal ATPCO Use Only" start="399" length="2" type="AN" />
+    </record>
+
+    <record name="09" alias="R09" description="Exchanged Document Information Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="OTDN" description="Ticket #1 Original Ticket/Document Number" start="43" length="15" type="AN" />
+        <field id="8" name="CDGT" description="Ticket Check Digit" start="58" length="1" type="I" />
+        <field id="9" name="RTDN" description="Ticket #1 Related Ticket/Document Number" start="59" length="15" type="AN" />
+        <field id="10" name="RCPN" description="Ticket Coupons" start="74" length="4" type="N" />
+        <field id="11" name="OIPD" description="Ticket Agent" start="78" length="16" type="AN" />
+        <field id="12" name="OTDN" description="Ticket #2 Original Ticket/Document Number" start="94" length="15" type="AN" />
+        <field id="13" name="CDGT" description="Ticket Check Digit" start="109" length="1" type="I" />
+        <field id="14" name="RTDN" description="Ticket #2 Related Ticket/Document Number" start="110" length="15" type="AN" />
+        <field id="15" name="RCPN" description="Ticket Coupons" start="125" length="4" type="N" />
+        <field id="16" name="OIPD" description="Ticket Agent" start="129" length="16" type="AN" />
+        <field id="17" name="OTDN" description="Ticket #3 Original Ticket/Document Number" start="145" length="15" type="AN" />
+        <field id="18" name="CDGT" description="Ticket Check Digit" start="160" length="1" type="I" />
+        <field id="19" name="RTDN" description="Ticket #3 Related Ticket/Document Number" start="161" length="15" type="AN" />
+        <field id="20" name="RCPN" description="Ticket Coupons" start="176" length="4" type="N" />
+        <field id="21" name="OIPD" description="Ticket Agent" start="180" length="16" type="AN" />
+        <field id="22" name="OTDN" description="Ticket #4 Original Ticket/Document Number" start="196" length="15" type="AN" />
+        <field id="23" name="CDGT" description="Ticket Check Digit" start="211" length="1" type="I" />
+        <field id="24" name="RTDN" description="Ticket #4 Related Ticket/Document Number" start="212" length="15" type="AN" />
+        <field id="25" name="RCPN" description="Ticket Coupons" start="227" length="4" type="N" />
+        <field id="26" name="OIPD" description="Ticket Agent" start="231" length="16" type="AN" />
+        <field id="27" name="OTDN" description="Ticket #5 Original Ticket/Document Number" start="247" length="15" type="AN" />
+        <field id="28" name="CDGT" description="Ticket Check Digit" start="262" length="1" type="I" />
+        <field id="29" name="RTDN" description="Ticket #5 Related Ticket/Document Number" start="263" length="15" type="AN" />
+        <field id="30" name="RCPN" description="Ticket Coupons" start="278" length="4" type="N" />
+        <field id="31" name="OIPD" description="Ticket Agent" start="282" length="16" type="AN" />
+        <field id="32" name="OTDN" description="Ticket #6 Original Ticket/Document Number" start="298" length="15" type="AN" />
+        <field id="33" name="CDGT" description="Ticket Check Digit" start="313" length="1" type="I" />
+        <field id="34" name="RTDN" description="Ticket #6 Related Ticket/Document Number" start="314" length="15" type="AN" />
+        <field id="35" name="RCPN" description="Ticket Coupons" start="329" length="4" type="N" />
+        <field id="36" name="OIPD" description="Ticket Agent" start="333" length="16" type="AN" />
+        <field id="37" name="EXCN" description="Exchange Certificate #1 Number" start="349" length="13" type="AN" />
+        <field id="38" name="EXCN" description="Exchange Certificate #2 Number" start="362" length="13" type="AN" />
+        <field id="39" name="EXCN" description="Exchange Certificate #3 Number" start="375" length="13" type="AN" />
+        <field id="40" name="FILL" description="Filler" start="388" length="13" type="AN" />
+    </record>
+
+    <record name="10" alias="R10" description="New: Coupon Tax Information (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="FILL" description="Filler" start="43" length="10" type="AN" />
+        <field id="8" name="COUN" description="Coupon Number" start="53" length="1" type="AN" />
+        <field id="9" name="CTAC" description="Coupon Tax Airport Code" start="54" length="5" type="AN" />
+        <field id="10" name="STAC" description="Segment Tax Airport Code" start="59" length="6" type="AN" />
+        <field id="11" name="CTCD" description="Coupon Tax Code" start="65" length="5" type="AN" />
+        <field id="12" name="CTRA" description="Coupon Tax Reported Amount" start="70" length="11" type="N" />
+        <field id="13" name="CUTX" description="Coupon Tax Currency Type" start="81" length="4" type="AN" />
+        <field id="14" name="CTAA" description="Coupon Tax Applicable Amount" start="85" length="11" type="N" />
+        <field id="15" name="FILL" description="Filler" start="96" length="40" type="AN" />
+        <field id="16" name="COUN" description="Coupon Number" start="136" length="1" type="AN" />
+        <field id="17" name="CTAC" description="Coupon Tax Airport Code" start="137" length="5" type="AN" />
+        <field id="18" name="STAC" description="Segment Tax Airport Code" start="142" length="6" type="AN" />
+        <field id="19" name="CTCD" description="Coupon Tax Code" start="148" length="5" type="AN" />
+        <field id="20" name="CTRA" description="Coupon Tax Reported Amount" start="153" length="11" type="N" />
+        <field id="21" name="CUTX" description="Coupon Tax Currency Type" start="164" length="4" type="AN" />
+        <field id="22" name="CTAA" description="Coupon Tax Applicable Amount" start="168" length="11" type="N" />
+        <field id="23" name="FILL" description="Filler" start="179" length="40" type="AN" />
+        <field id="24" name="COUN" description="Coupon Number" start="219" length="1" type="AN" />
+        <field id="25" name="CTAC" description="Coupon Tax Airport Code" start="220" length="5" type="AN" />
+        <field id="26" name="STAC" description="Segment Tax Airport Code" start="225" length="6" type="AN" />
+        <field id="27" name="CTCD" description="Coupon Tax Code" start="231" length="5" type="AN" />
+        <field id="28" name="CTRA" description="Coupon Tax Reported Amount" start="236" length="11" type="N" />
+        <field id="29" name="CUTX" description="Coupon Tax Currency Type" start="247" length="4" type="AN" />
+        <field id="30" name="CTAA" description="Coupon Tax Applicable Amount" start="251" length="11" type="N" />
+        <field id="31" name="FILL" description="Filler" start="262" length="40" type="AN" />
+        <field id="32" name="COUN" description="Coupon Number" start="302" length="1" type="AN" />
+        <field id="33" name="CTAC" description="Coupon Tax Airport Code" start="303" length="5" type="AN" />
+        <field id="34" name="STAC" description="Segment Tax Airport Code" start="308" length="6" type="AN" />
+        <field id="35" name="CTCD" description="Coupon Tax Code" start="314" length="5" type="AN" />
+        <field id="36" name="CTRA" description="Coupon Tax Reported Amount" start="319" length="11" type="N" />
+        <field id="37" name="CUTX" description="Coupon Tax Currency Type" start="330" length="4" type="AN" />
+        <field id="38" name="CTAA" description="Coupon Tax Applicable Amount" start="334" length="11" type="N" />
+        <field id="39" name="FILL" description="Filler" start="345" length="56" type="AN" />
+    </record>
+
+    <record name="11" alias="R11" description="New: Netting Values Records (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="FILL" description="Filler" start="43" length="10" type="AN" />
+        <field id="8" name="NTTP" description="Netting Type" start="53" length="1" type="AN" />
+        <field id="9" name="NTTC" description="Netting Code" start="54" length="8" type="AN" />
+        <field id="10" name="NTTA" description="Netting Amount" start="62" length="11" type="N" />
+        <field id="11" name="FILL" description="Filler" start="73" length="67" type="AN" />
+        <field id="12" name="NTTP" description="Netting Type" start="140" length="1" type="AN" />
+        <field id="13" name="NTTC" description="Netting Code" start="141" length="8" type="AN" />
+        <field id="14" name="NTTA" description="Netting Amount" start="149" length="11" type="N" />
+        <field id="15" name="FILL" description="Filler" start="160" length="67" type="AN" />
+        <field id="16" name="NTTP" description="Netting Type" start="227" length="1" type="AN" />
+        <field id="17" name="NTTC" description="Netting Code" start="228" length="8" type="AN" />
+        <field id="18" name="NTTA" description="Netting Amount" start="236" length="11" type="N" />
+        <field id="19" name="FILL" description="Filler" start="247" length="67" type="AN" />
+        <field id="20" name="NTTP" description="Netting Type" start="314" length="1" type="AN" />
+        <field id="21" name="NTTC" description="Netting Code" start="315" length="8" type="AN" />
+        <field id="22" name="NTTA" description="Netting Amount" start="323" length="11" type="N" />
+        <field id="23" name="FILL" description="Filler" start="334" length="67" type="AN" />
+    </record>
+
+    <record name="12" alias="R12" description="Netting Values Records">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="ATPCO generated Sequence Number" start="3" length="8" type="N" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Check Digit" start="26" length="1" type="N" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="N" />
+        <field id="7" name="COUN" description="Coupon Number" start="43" length="1" type="AN" />
+        <field id="8" name="FTDA" description="Flight Departure Date" start="44" length="7" type="AN" />
+        <field id="9" name="FDTE" description="Flight Departure Terminal" start="51" length="5" type="AN" />
+        <field id="10" name="FTAD" description="Flight Arrival Date" start="56" length="7" type="AN" />
+        <field id="11" name="FTAT" description="Flight Arrival Time" start="63" length="5" type="AN" />
+        <field id="12" name="FATE" description="Flight Arrival Terminal" start="68" length="5" type="AN" />
+        <field id="13" name="UTPC" description="Unticketed Point Airport/City Code" start="73" length="5" type="AN" />
+        <field id="14" name="UPDA" description="Unticketed Point Date of Arrival" start="78" length="7" type="AN" />
+        <field id="15" name="UPTA" description="Unticketed Point Local Time of Arrival" start="85" length="5" type="AN" />
+        <field id="16" name="UPDD" description="Unticketed Point Date of Departure" start="90" length="7" type="AN" />
+        <field id="17" name="UPTD" description="Unticketed Point Local Time of Departure" start="97" length="5" type="AN" />
+        <field id="18" name="UPEQ" description="Unticketed Point Departure Equipment Code" start="102" length="3" type="AN" />
+        <field id="19" name="FILL" description="Filler" start="105" length="18" type="AN" />
+        <field id="20" name="COUN" description="Coupon Number" start="123" length="1" type="AN" />
+        <field id="21" name="FTDA" description="Flight Departure Date" start="124" length="7" type="AN" />
+        <field id="22" name="FDTE" description="Flight Departure Terminal" start="131" length="5" type="AN" />
+        <field id="23" name="FTAD" description="Flight Arrival Date" start="136" length="7" type="AN" />
+        <field id="24" name="FTAT" description="Flight Arrival Time" start="143" length="5" type="AN" />
+        <field id="25" name="FATE" description="Flight Arrival Terminal" start="148" length="5" type="AN" />
+        <field id="26" name="UTPC" description="Unticketed Point Airport/City Code" start="153" length="5" type="AN" />
+        <field id="27" name="UPDA" description="Unticketed Point Date of Arrival" start="158" length="7" type="AN" />
+        <field id="28" name="UPTA" description="Unticketed Point Local Time of Arrival" start="165" length="5" type="AN" />
+        <field id="29" name="UPDD" description="Unticketed Point Date of Departure" start="170" length="7" type="AN" />
+        <field id="30" name="UPTD" description="Unticketed Point Local Time of Departure" start="177" length="5" type="AN" />
+        <field id="31" name="UPEQ" description="Unticketed Point Departure Equipment Code" start="182" length="3" type="AN" />
+        <field id="32" name="FILL" description="Filler" start="185" length="18" type="AN" />
+        <field id="33" name="COUN" description="Coupon Number" start="203" length="1" type="AN" />
+        <field id="34" name="FTDA" description="Flight Departure Date" start="204" length="7" type="AN" />
+        <field id="35" name="FDTE" description="Flight Departure Terminal" start="211" length="5" type="AN" />
+        <field id="36" name="FTAD" description="Flight Arrival Date" start="216" length="7" type="AN" />
+        <field id="37" name="FTAT" description="Flight Arrival Time" start="223" length="5" type="AN" />
+        <field id="38" name="FATE" description="Flight Arrival Terminal" start="228" length="5" type="AN" />
+        <field id="39" name="UTPC" description="Unticketed Point Airport/City Code" start="233" length="5" type="AN" />
+        <field id="40" name="UPDA" description="Unticketed Point Date of Arrival" start="238" length="7" type="AN" />
+        <field id="41" name="UPTA" description="Unticketed Point Local Time of Arrival" start="245" length="5" type="AN" />
+        <field id="42" name="UPDD" description="Unticketed Point Date of Departure" start="250" length="7" type="AN" />
+        <field id="43" name="UPTD" description="Unticketed Point Local Time of Departure" start="257" length="5" type="AN" />
+        <field id="44" name="UPEQ" description="Unticketed Point Departure Equipment Code" start="262" length="3" type="AN" />
+        <field id="45" name="FILL" description="Filler" start="265" length="18" type="AN" />
+        <field id="46" name="COUN" description="Coupon Number" start="283" length="1" type="AN" />
+        <field id="47" name="FTDA" description="Flight Departure Date" start="284" length="7" type="AN" />
+        <field id="48" name="FDTE" description="Flight Departure Terminal" start="291" length="5" type="AN" />
+        <field id="49" name="FTAD" description="Flight Arrival Date" start="296" length="7" type="AN" />
+        <field id="50" name="FTAT" description="Flight Arrival Time" start="303" length="5" type="AN" />
+        <field id="51" name="FATE" description="Flight Arrival Terminal" start="308" length="5" type="AN" />
+        <field id="52" name="UTPC" description="Unticketed Point Airport/City Code" start="313" length="5" type="AN" />
+        <field id="53" name="UPDA" description="Unticketed Point Date of Arrival" start="318" length="7" type="AN" />
+        <field id="54" name="UPTA" description="Unticketed Point Local Time of Arrival" start="325" length="5" type="AN" />
+        <field id="55" name="UPDD" description="Unticketed Point Date of Departure" start="330" length="7" type="AN" />
+        <field id="56" name="UPTD" description="Unticketed Point Local Time of Departure" start="337" length="5" type="AN" />
+        <field id="57" name="UPEQ" description="Unticketed Point Departure Equipment Code" start="342" length="3" type="AN" />
+        <field id="58" name="FILL" description="Filler" start="345" length="18" type="AN" />
+        <field id="59" name="TACC" description="Turnaround Airport/City Code" start="363" length="5" type="AN" />
+        <field id="60" name="FILL" description="Filler" start="368" length="33" type="AN" />
+    </record>
+
+    <record name="15" alias="R15" description="EMD Coupon Detail Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="EMCP" description="Coupon Number" start="43" length="1" type="AN" />
+        <field id="8" name="CAII" description="Consumed at Issuance Indicator" start="44" length="1" type="AN" />
+        <field id="9" name="EMOC" description="Fee Owner" start="45" length="3" type="AN" />
+        <field id="10" name="FILL" description="Filler" start="48" length="2" type="AN" />
+        <field id="11" name="EMSC" description="Reason for Issuance Sub Code" start="50" length="5" type="AN" />
+        <field id="12" name="EMFT" description="Flight Ticket Merchandise Tag" start="55" length="1" type="AN" />
+        <field id="13" name="EMAG" description="Attribute Group" start="56" length="3" type="AN" />
+        <field id="14" name="EMSG" description="Attribute Sub Group" start="59" length="3" type="AN" />
+        <field id="15" name="EMCV" description="Coupon Value" start="62" length="11" type="N" />
+        <field id="16" name="CUTP" description="Coupon Currency" start="73" length="4" type="AN" />
+        <field id="17" name="EMRT" description="Related Ticket Number" start="77" length="15" type="AN" />
+        <field id="18" name="EMRC" description="Related Coupon Number" start="92" length="1" type="AN" />
+        <field id="19" name="EMRF" description="Refundable Tag" start="93" length="1" type="AN" />
+        <field id="20" name="EMIN" description="Interlineable Tag" start="94" length="1" type="AN" />
+        <field id="21" name="EMCO" description="Commissionable Tag" start="95" length="1" type="AN" />
+        <field id="22" name="EMEN" description="Endorsable Tag" start="96" length="1" type="AN" />
+        <field id="23" name="EMRX" description="Reissue Exchange Tag" start="97" length="1" type="AN" />
+        <field id="24" name="EMSN" description="Optional Service Pricing Sequence Number" start="98" length="7" type="N" />
+        <field id="25" name="EMCR" description="EMD Operating Carrier" start="105" length="3" type="AN" />
+        <field id="26" name="EMID" description="EMD Industry Carrier Indicator" start="108" length="1" type="AN" />
+        <field id="27" name="EMNS" description="EMD Number of Services" start="109" length="3" type="AN" />
+        <field id="28" name="EMST" description="EMD Service Type" start="112" length="1" type="AN" />
+        <field id="29" name="FILL" description="Filler" start="113" length="2" type="AN" />
+        <field id="30" name="EMCP" description="Coupon Number" start="115" length="1" type="AN" />
+        <field id="31" name="CAII" description="Consumed at Issuance Indicator" start="116" length="1" type="AN" />
+        <field id="32" name="EMOC" description="Fee Owner" start="117" length="3" type="AN" />
+        <field id="33" name="FILL" description="Filler" start="120" length="2" type="AN" />
+        <field id="34" name="EMSC" description="Reason for Issuance Sub Code" start="122" length="5" type="AN" />
+        <field id="35" name="EMFT" description="Flight Ticket Merchandise Tag" start="127" length="1" type="AN" />
+        <field id="36" name="EMAG" description="Attribute Group" start="128" length="3" type="AN" />
+        <field id="37" name="EMSG" description="Attribute Sub Group" start="131" length="3" type="AN" />
+        <field id="38" name="EMCV" description="Coupon Value" start="134" length="11" type="N" />
+        <field id="39" name="CUTP" description="Coupon Currency" start="145" length="4" type="AN" />
+        <field id="40" name="EMRT" description="Related Ticket Number" start="149" length="15" type="AN" />
+        <field id="41" name="EMRC" description="Related Coupon Number" start="164" length="1" type="AN" />
+        <field id="42" name="EMRF" description="Refundable Tag" start="165" length="1" type="AN" />
+        <field id="43" name="EMIN" description="Interlineable Tag" start="166" length="1" type="AN" />
+        <field id="44" name="EMCO" description="Commissionable Tag" start="167" length="1" type="AN" />
+        <field id="45" name="EMEN" description="Endorsable Tag" start="168" length="1" type="AN" />
+        <field id="46" name="EMRX" description="Reissue Exchange Tag" start="169" length="1" type="AN" />
+        <field id="47" name="EMSN" description="Optional Service Pricing Sequence Number" start="170" length="7" type="N" />
+        <field id="48" name="EMCR" description="EMD Operating Carrier" start="177" length="3" type="AN" />
+        <field id="49" name="EMID" description="EMD Industry Carrier Indicator" start="180" length="1" type="AN" />
+        <field id="50" name="EMNS" description="EMD Number of Services" start="181" length="3" type="AN" />
+        <field id="51" name="EMST" description="EMD Service Type" start="184" length="1" type="AN" />
+        <field id="52" name="FILL" description="Filler" start="185" length="2" type="AN" />
+        <field id="53" name="EMCP" description="Coupon Number" start="187" length="1" type="AN" />
+        <field id="54" name="CAII" description="Consumed at Issuance Indicator" start="188" length="1" type="AN" />
+        <field id="55" name="EMOC" description="Fee Owner" start="189" length="3" type="AN" />
+        <field id="56" name="FILL" description="Filler" start="192" length="2" type="AN" />
+        <field id="57" name="EMSC" description="Reason for Issuance Sub Code" start="194" length="5" type="AN" />
+        <field id="58" name="EMFT" description="Flight Ticket Merchandise Tag" start="199" length="1" type="AN" />
+        <field id="59" name="EMAG" description="Attribute Group" start="200" length="3" type="AN" />
+        <field id="60" name="EMSG" description="Attribute Sub Group" start="203" length="3" type="AN" />
+        <field id="61" name="EMCV" description="Coupon Value" start="206" length="11" type="N" />
+        <field id="62" name="CUTP" description="Coupon Currency" start="217" length="4" type="AN" />
+        <field id="63" name="EMRT" description="Related Ticket Number" start="221" length="15" type="AN" />
+        <field id="64" name="EMRC" description="Related Coupon Number" start="236" length="1" type="AN" />
+        <field id="65" name="EMRF" description="Refundable Tag" start="237" length="1" type="AN" />
+        <field id="66" name="EMIN" description="Interlineable Tag" start="238" length="1" type="AN" />
+        <field id="67" name="EMCO" description="Commissionable Tag" start="239" length="1" type="AN" />
+        <field id="68" name="EMEN" description="Endorsable Tag" start="240" length="1" type="AN" />
+        <field id="69" name="EMRX" description="Reissue Exchange Tag" start="241" length="1" type="AN" />
+        <field id="70" name="EMSN" description="Optional Service Pricing Sequence Number" start="242" length="7" type="N" />
+        <field id="71" name="EMCR" description="EMD Operating Carrier" start="249" length="3" type="AN" />
+        <field id="72" name="EMID" description="EMD Industry Carrier Indicator" start="252" length="1" type="AN" />
+        <field id="73" name="EMNS" description="EMD Number of Services" start="253" length="3" type="AN" />
+        <field id="74" name="EMST" description="EMD Service Type" start="256" length="1" type="AN" />
+        <field id="75" name="FILL" description="Filler" start="257" length="2" type="AN" />
+        <field id="76" name="EMCP" description="Coupon Number" start="259" length="1" type="AN" />
+        <field id="77" name="CAII" description="Consumed at Issuance Indicator" start="260" length="1" type="AN" />
+        <field id="78" name="EMOC" description="Fee Owner" start="261" length="3" type="AN" />
+        <field id="79" name="FILL" description="Filler" start="264" length="2" type="AN" />
+        <field id="80" name="EMSC" description="Reason for Issuance Sub Code" start="266" length="5" type="AN" />
+        <field id="81" name="EMFT" description="Flight Ticket Merchandise Tag" start="271" length="1" type="AN" />
+        <field id="82" name="EMAG" description="Attribute Group" start="272" length="3" type="AN" />
+        <field id="83" name="EMSG" description="Attribute Sub Group" start="275" length="3" type="AN" />
+        <field id="84" name="EMCV" description="Coupon Value" start="278" length="11" type="N" />
+        <field id="85" name="CUTP" description="Coupon Currency" start="289" length="4" type="AN" />
+        <field id="86" name="EMRT" description="Related Ticket Number" start="293" length="15" type="AN" />
+        <field id="87" name="EMRC" description="Related Coupon Number" start="308" length="1" type="AN" />
+        <field id="88" name="EMRF" description="Refundable Tag" start="309" length="1" type="AN" />
+        <field id="89" name="EMIN" description="Interlineable Tag" start="310" length="1" type="AN" />
+        <field id="90" name="EMCO" description="Commissionable Tag" start="311" length="1" type="AN" />
+        <field id="91" name="EMEN" description="Endorsable Tag" start="312" length="1" type="AN" />
+        <field id="92" name="EMRX" description="Reissue Exchange Tag" start="313" length="1" type="AN" />
+        <field id="93" name="EMSN" description="Optional Service Pricing Sequence Number" start="314" length="7" type="N" />
+        <field id="94" name="EMCR" description="EMD Operating Carrier" start="321" length="3" type="AN" />
+        <field id="95" name="EMID" description="EMD Industry Carrier Indicator" start="324" length="1" type="AN" />
+        <field id="96" name="EMNS" description="EMD Number of Services" start="325" length="3" type="AN" />
+        <field id="97" name="EMST" description="EMD Service Type" start="328" length="1" type="AN" />
+        <field id="98" name="FILL" description="Filler" start="329" length="72" type="AN" />
+    </record>
+
+    <record name="16" alias="R16" description="EMD Service and Baggage Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="EMCP" description="Coupon Number" start="43" length="1" type="AN" />
+        <field id="8" name="XBOA" description="Excess Baggage Over Allowance Qualifier" start="44" length="1" type="AN" />
+        <field id="9" name="XBRU" description="Excess Baggage Rate per Unit" start="45" length="12" type="AN" />
+        <field id="10" name="XBNE" description="Excess Baggage Quantity in Excess" start="57" length="12" type="AN" />
+        <field id="11" name="EMDS" description="Date of Service" start="69" length="7" type="AN" />
+        <field id="12" name="EMFF" description="Additional Services Filed Fee Amount" start="76" length="12" type="AN" />
+        <field id="13" name="EMBS" description="Additional Services Filed Fee BSR" start="88" length="13" type="AN" />
+        <field id="14" name="CUTP" description="Additional Services Filed Fee Currency" start="101" length="4" type="AN" />
+        <field id="15" name="XBCT" description="EMD Excess Baggage Currency Code" start="105" length="3" type="AN" />
+        <field id="16" name="FILL" description="Filler" start="108" length="23" type="AN" />
+        <field id="17" name="EMCP" description="Coupon Number" start="131" length="1" type="AN" />
+        <field id="18" name="XBOA" description="Excess Baggage Over Allowance Qualifier" start="132" length="1" type="AN" />
+        <field id="19" name="XBRU" description="Excess Baggage Rate per Unit" start="133" length="12" type="AN" />
+        <field id="20" name="XBNE" description="Excess Baggage Quantity in Excess" start="145" length="12" type="AN" />
+        <field id="21" name="EMDS" description="Date of Service" start="157" length="7" type="AN" />
+        <field id="22" name="EMFF" description="Additional Services Filed Fee Amount" start="164" length="12" type="AN" />
+        <field id="23" name="EMBS" description="Additional Services Filed Fee BSR" start="176" length="13" type="AN" />
+        <field id="24" name="CUTP" description="Additional Services Filed Fee Currency" start="189" length="4" type="AN" />
+        <field id="25" name="XBCT" description="EMD Excess Baggage Currency Code" start="193" length="3" type="AN" />
+        <field id="26" name="FILL" description="Filler" start="196" length="23" type="AN" />
+        <field id="27" name="EMCP" description="Coupon Number" start="219" length="1" type="AN" />
+        <field id="28" name="XBOA" description="Excess Baggage Over Allowance Qualifier" start="220" length="1" type="AN" />
+        <field id="29" name="XBRU" description="Excess Baggage Rate per Unit" start="221" length="12" type="AN" />
+        <field id="30" name="XBNE" description="Excess Baggage Quantity in Excess" start="233" length="12" type="AN" />
+        <field id="31" name="EMDS" description="Date of Service" start="245" length="7" type="AN" />
+        <field id="32" name="EMFF" description="Additional Services Filed Fee Amount" start="252" length="12" type="AN" />
+        <field id="33" name="EMBS" description="Additional Services Filed Fee BSR" start="264" length="13" type="AN" />
+        <field id="34" name="CUTP" description="Additional Services Filed Fee Currency" start="277" length="4" type="AN" />
+        <field id="35" name="XBCT" description="EMD Excess Baggage Currency Code" start="281" length="3" type="AN" />
+        <field id="36" name="FILL" description="Filler" start="284" length="23" type="AN" />
+        <field id="37" name="EMCP" description="Coupon Number" start="307" length="1" type="AN" />
+        <field id="38" name="XBOA" description="Excess Baggage Over Allowance Qualifier" start="308" length="1" type="AN" />
+        <field id="39" name="XBRU" description="Excess Baggage Rate per Unit" start="309" length="12" type="AN" />
+        <field id="40" name="XBNE" description="Excess Baggage Quantity in Excess" start="321" length="12" type="AN" />
+        <field id="41" name="EMDS" description="Date of Service" start="333" length="7" type="AN" />
+        <field id="42" name="EMFF" description="Additional Services Filed Fee Amount" start="340" length="12" type="AN" />
+        <field id="43" name="EMBS" description="Additional Services Filed Fee BSR" start="352" length="13" type="AN" />
+        <field id="44" name="CUTP" description="Additional Services Filed Fee Currency" start="365" length="4" type="AN" />
+        <field id="45" name="XBCT" description="EMD Excess Baggage Currency Code" start="369" length="3" type="AN" />
+        <field id="46" name="FILL" description="Filler" start="372" length="29" type="AN" />
+    </record>
+
+    <record name="17" alias="R17" description="EMD Service Description Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="EMCP" description="Coupon Number" start="43" length="1" type="AN" />
+        <field id="8" name="FILL" description="Filler" start="44" length="1" type="AN" />
+        <field id="9" name="RISD" description="Reason for Issuance Sub Code Description" start="45" length="44" type="AN" />
+        <field id="10" name="PRST" description="Present To" start="89" length="43" type="AN" />
+        <field id="11" name="EMCP" description="Coupon Number" start="132" length="1" type="AN" />
+        <field id="12" name="FILL" description="Filler" start="133" length="1" type="AN" />
+        <field id="13" name="RISD" description="Reason for Issuance Sub Code Description" start="134" length="44" type="AN" />
+        <field id="14" name="PRST" description="Present To" start="178" length="43" type="AN" />
+        <field id="15" name="EMCP" description="Coupon Number" start="221" length="1" type="AN" />
+        <field id="16" name="FILL" description="Filler" start="222" length="1" type="AN" />
+        <field id="17" name="RISD" description="Reason for Issuance Sub Code Description" start="223" length="44" type="AN" />
+        <field id="18" name="PRST" description="Present To" start="267" length="43" type="AN" />
+        <field id="19" name="EMCP" description="Coupon Number" start="310" length="1" type="AN" />
+        <field id="20" name="FILL" description="Filler" start="311" length="1" type="AN" />
+        <field id="21" name="RISD" description="Reason for Issuance Sub Code Description" start="312" length="44" type="AN" />
+        <field id="22" name="PRST" description="Present To" start="356" length="43" type="AN" />
+        <field id="23" name="FILL" description="Filler" start="399" length="2" type="AN" />
+    </record>
+
+    <record name="18" alias="R18" description="EMD Remarks Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="EMIC" description="Reason for Issuance Code" start="43" length="1" type="AN" />
+        <field id="8" name="RMKS" description="Remarks" start="44" length="70" type="AN" />
+        <field id="9" name="BERA" description="Bank Exchange Rate" start="114" length="13" type="AN" />
+        <field id="10" name="EMCP" description="Coupon Number" start="127" length="1" type="AN" />
+        <field id="11" name="EMRM" description="Coupon Remarks" start="128" length="65" type="AN" />
+        <field id="12" name="EMCP" description="Coupon Number" start="193" length="1" type="AN" />
+        <field id="13" name="EMRM" description="Coupon Remarks" start="194" length="65" type="AN" />
+        <field id="14" name="EMCP" description="Coupon Number" start="259" length="1" type="AN" />
+        <field id="15" name="EMRM" description="Coupon Remarks" start="260" length="65" type="AN" />
+        <field id="16" name="EMCP" description="Coupon Number" start="325" length="1" type="AN" />
+        <field id="17" name="EMRM" description="Coupon Remarks" start="326" length="65" type="AN" />
+        <field id="18" name="FILL" description="Filler" start="391" length="10" type="AN" />
+    </record>
+
+    <record name="24" alias="R24" description="Exchange Detail Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="OPFC" description="Old PFC #1 City Code" start="43" length="3" type="AN" />
+        <field id="8" name="OPFA" description="Old PFC #1 Amount" start="46" length="3" type="N" />
+        <field id="9" name="OPFC" description="Old PFC #2 City Code" start="49" length="3" type="AN" />
+        <field id="10" name="OPFA" description="Old PFC #2 Amount" start="52" length="3" type="N" />
+        <field id="11" name="OPFC" description="Old PFC #3 City Code" start="55" length="3" type="AN" />
+        <field id="12" name="OPFA" description="Old PFC #3 Amount" start="58" length="3" type="N" />
+        <field id="13" name="OPFC" description="Old PFC #4 City Code" start="61" length="3" type="AN" />
+        <field id="14" name="OPFA" description="Old PFC #4 Amount" start="64" length="3" type="N" />
+        <field id="15" name="NPFC" description="New PFC #1 City Code" start="67" length="3" type="AN" />
+        <field id="16" name="NPFA" description="New PFC #1 Amount" start="70" length="3" type="N" />
+        <field id="17" name="NPFC" description="New PFC #2 City Code" start="73" length="3" type="AN" />
+        <field id="18" name="NPFA" description="New PFC #2 Amount" start="76" length="3" type="N" />
+        <field id="19" name="NPFC" description="New PFC #3 City Code" start="79" length="3" type="AN" />
+        <field id="20" name="NPFA" description="New PFC #3 Amount" start="82" length="3" type="N" />
+        <field id="21" name="NPFC" description="New PFC #4 City Code" start="85" length="3" type="AN" />
+        <field id="22" name="NPFA" description="New PFC #4 Amount" start="88" length="3" type="N" />
+        <field id="23" name="PTXA" description="Paid Tax Amount #1" start="91" length="7" type="N" />
+        <field id="24" name="PTXC" description="Paid Tax Code #1" start="98" length="3" type="AN" />
+        <field id="25" name="PTXA" description="Paid Tax Amount #2" start="101" length="7" type="N" />
+        <field id="26" name="PTXC" description="Paid Tax Code #2" start="108" length="3" type="AN" />
+        <field id="27" name="PTXA" description="Paid Tax Amount #3" start="111" length="7" type="N" />
+        <field id="28" name="PTXC" description="Paid Tax Code #3" start="118" length="3" type="AN" />
+        <field id="29" name="PTXA" description="Paid Tax Amount #4" start="121" length="7" type="N" />
+        <field id="30" name="PTXC" description="Paid Tax Code #4" start="128" length="3" type="AN" />
+        <field id="31" name="PTXA" description="Paid Tax Amount #5" start="131" length="7" type="N" />
+        <field id="32" name="PTXC" description="Paid Tax Code #5" start="138" length="3" type="AN" />
+        <field id="33" name="PTXA" description="Paid Tax Amount #6" start="141" length="7" type="N" />
+        <field id="34" name="PTXC" description="Paid Tax Code #6" start="148" length="3" type="AN" />
+        <field id="35" name="PTXA" description="Paid Tax Amount #7" start="151" length="7" type="N" />
+        <field id="36" name="PTXC" description="Paid Tax Code #7" start="158" length="3" type="AN" />
+        <field id="37" name="PTXA" description="Paid Tax Amount #8" start="161" length="7" type="N" />
+        <field id="38" name="PTXC" description="Paid Tax Code #8" start="168" length="3" type="AN" />
+        <field id="39" name="PTXA" description="Paid Tax Amount #9" start="171" length="7" type="N" />
+        <field id="40" name="PTXC" description="Paid Tax Code #9" start="178" length="3" type="AN" />
+        <field id="41" name="PTXA" description="Paid Tax Amount #10" start="181" length="7" type="N" />
+        <field id="42" name="PTXC" description="Paid Tax Code #10" start="188" length="3" type="AN" />
+        <field id="43" name="PTXA" description="Paid Tax Amount #11" start="191" length="7" type="N" />
+        <field id="44" name="PTXC" description="Paid Tax Code #11" start="198" length="3" type="AN" />
+        <field id="45" name="UTXA" description="Unpaid Tax Amount #1" start="201" length="7" type="N" />
+        <field id="46" name="UTXC" description="Unpaid Tax Code #1" start="208" length="3" type="AN" />
+        <field id="47" name="UTXA" description="Unpaid Tax Amount #2" start="211" length="7" type="N" />
+        <field id="48" name="UTXC" description="Unpaid Tax Code #2" start="218" length="3" type="AN" />
+        <field id="49" name="UTXA" description="Unpaid Tax Amount #3" start="221" length="7" type="N" />
+        <field id="50" name="UTXC" description="Unpaid Tax Code #3" start="228" length="3" type="AN" />
+        <field id="51" name="UTXA" description="Unpaid Tax Amount #4" start="231" length="7" type="N" />
+        <field id="52" name="UTXC" description="Unpaid Tax Code #4" start="238" length="3" type="AN" />
+        <field id="53" name="UTXA" description="Unpaid Tax Amount #5" start="241" length="7" type="N" />
+        <field id="54" name="UTXC" description="Unpaid Tax Code #5" start="248" length="3" type="AN" />
+        <field id="55" name="UTXA" description="Unpaid Tax Amount #6" start="251" length="7" type="N" />
+        <field id="56" name="UTXC" description="Unpaid Tax Code #6" start="258" length="3" type="AN" />
+        <field id="57" name="UTXA" description="Unpaid Tax Amount #7" start="261" length="7" type="N" />
+        <field id="58" name="UTXC" description="Unpaid Tax Code #7" start="268" length="3" type="AN" />
+        <field id="59" name="UTXA" description="Unpaid Tax Amount #8" start="271" length="7" type="N" />
+        <field id="60" name="UTXC" description="Unpaid Tax Code #8" start="278" length="3" type="AN" />
+        <field id="61" name="UTXA" description="Unpaid Tax Amount #9" start="281" length="7" type="N" />
+        <field id="62" name="UTXC" description="Unpaid Tax Code #9" start="288" length="3" type="AN" />
+        <field id="63" name="UTXA" description="Unpaid Tax Amount #10" start="291" length="7" type="N" />
+        <field id="64" name="UTXC" description="Unpaid Tax Code #10" start="298" length="3" type="AN" />
+        <field id="65" name="UTXA" description="Unpaid Tax Amount #11" start="301" length="7" type="N" />
+        <field id="66" name="UTXC" description="Unpaid Tax Code #11" start="308" length="3" type="AN" />
+        <field id="67" name="TECH" description="Type of Exchange" start="311" length="1" type="AN" />
+        <field id="68" name="AAAC" description="Agent Triple A City" start="312" length="5" type="AN" />
+        <field id="69" name="AGDS" description="Agent Duty Sine" start="317" length="3" type="AN" />
+        <field id="70" name="ACCB" description="Accelerated Credit Card Billing Indicator" start="320" length="1" type="AN" />
+        <field id="71" name="MFOP" description="Multiple Form of Payment Indicator" start="321" length="1" type="AN" />
+        <field id="72" name="EXGI" description="Global Indicator" start="322" length="2" type="AN" />
+        <field id="73" name="CARC" description="Carrier Controlling PNR" start="324" length="3" type="AN" />
+        <field id="74" name="TOUT" description="Tour Code Type" start="327" length="2" type="AN" />
+        <field id="75" name="TKDT" description="Ticket Designator Type" start="329" length="1" type="AN" />
+        <field id="76" name="AGST" description="Agent Station Code" start="330" length="5" type="AN" />
+        <field id="77" name="AGBR" description="Agent Branch Code" start="335" length="5" type="AN" />
+        <field id="78" name="AHCC" description="Agent Home City Code" start="340" length="5" type="AN" />
+        <field id="79" name="AGDC" description="Agent Duty Code" start="345" length="1" type="AN" />
+        <field id="80" name="EEPP" description="Electronic Ticket Eligible but Printed to Paper Code" start="346" length="1" type="AN" />
+        <field id="81" name="FILL" description="Filler" start="347" length="54" type="AN" />
+    </record>
+
+    <record name="25" alias="R25" description="Discount by Coupon (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="TDIS" description="Coupon #1 Type of Discount" start="43" length="1" type="AN" />
+        <field id="8" name="DISC" description="Coupon #1 Discount" start="44" length="11" type="N" />
+        <field id="9" name="TDIS" description="Coupon #2 Type of Discount" start="55" length="1" type="AN" />
+        <field id="10" name="DISC" description="Coupon #2 Discount" start="56" length="11" type="N" />
+        <field id="11" name="TDIS" description="Coupon #3 Type of Discount" start="67" length="1" type="AN" />
+        <field id="12" name="DISC" description="Coupon #3 Discount" start="68" length="11" type="N" />
+        <field id="13" name="TDIS" description="Coupon #4 Type of Discount" start="79" length="1" type="AN" />
+        <field id="14" name="DISC" description="Coupon #4 Discount" start="80" length="11" type="N" />
+        <field id="15" name="TKFI" description="Ticketing From Stored Fare Indicator" start="91" length="1" type="AN" />
+        <field id="16" name="FARI" description="Stored Fare Priced Indicator" start="92" length="1" type="AN" />
+        <field id="17" name="AAAC" description="Agent Triple A City Code" start="93" length="5" type="AN" />
+        <field id="18" name="AHCC" description="Agent Home City Code" start="98" length="5" type="AN" />
+        <field id="19" name="AGDS" description="Agent Sine" start="103" length="3" type="AN" />
+        <field id="20" name="AGST" description="Agent Station Code" start="106" length="5" type="AN" />
+        <field id="21" name="AGBR" description="Agent Branch Code" start="111" length="5" type="AN" />
+        <field id="22" name="AGDC" description="Agent Duty Code" start="116" length="1" type="AN" />
+        <field id="23" name="SPND" description="Stored Fare Date" start="117" length="8" type="N" />
+        <field id="24" name="SPNT" description="Stored Fare Time" start="125" length="4" type="N" />
+        <field id="25" name="AAAC" description="Triple A City Code" start="129" length="5" type="AN" />
+        <field id="26" name="AHCC" description="Agent Home City Code" start="134" length="5" type="AN" />
+        <field id="27" name="AGDS" description="Agent Sine" start="139" length="3" type="AN" />
+        <field id="28" name="AGST" description="Agent Station Code" start="142" length="5" type="AN" />
+        <field id="29" name="AGBR" description="Agent Branch Code" start="147" length="5" type="AN" />
+        <field id="30" name="AGDC" description="Agent Duty Code" start="152" length="1" type="AN" />
+        <field id="31" name="SPND" description="Stored Fare Date" start="153" length="8" type="N" />
+        <field id="32" name="SPNT" description="Stored Fare Time" start="161" length="4" type="N" />
+        <field id="33" name="FILL" description="Filler" start="165" length="236" type="AN" />
+    </record>
+
+    <record name="26" alias="R26" description="Airline Miscellaneous Sales Receipt (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check-Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check-Digit" start="42" length="1" type="I" />
+        <field id="7" name="MMMS" description="Menu Selection" start="43" length="2" type="AN" />
+        <field id="8" name="SMMS" description="Second Menu Selection" start="45" length="2" type="AN" />
+        <field id="9" name="ACDI" description="Approval Code Indicator" start="47" length="1" type="AN" />
+        <field id="10" name="IAC1" description="ISO Approval Code - 1" start="48" length="1" type="AN" />
+        <field id="11" name="IAC2" description="ISO Approval Code - 2" start="49" length="1" type="AN" />
+        <field id="12" name="MNML" description="Purchaser s Last Name" start="50" length="20" type="AN" />
+        <field id="13" name="MNMF" description="Purchaser s First Name" start="70" length="15" type="AN" />
+        <field id="14" name="MAWD" description="Award Code" start="85" length="10" type="AN" />
+        <field id="15" name="MAD2" description="Purchaser s Second Address" start="95" length="30" type="AN" />
+        <field id="16" name="PRAT" description="Tax Indicator - #1" start="125" length="1" type="AN" />
+        <field id="17" name="PUNT" description="Units Sold - #1" start="126" length="2" type="AN" />
+        <field id="18" name="PRAT" description="Tax Indicator - #2" start="128" length="1" type="AN" />
+        <field id="19" name="PUNT" description="Units Sold - #2" start="129" length="2" type="AN" />
+        <field id="20" name="PRAT" description="Tax Indicator - #3" start="131" length="1" type="AN" />
+        <field id="21" name="PUNT" description="Units Sold - #3" start="132" length="2" type="AN" />
+        <field id="22" name="PRAT" description="Tax Indicator - #4" start="134" length="1" type="AN" />
+        <field id="23" name="PUNT" description="Units Sold - #4" start="135" length="2" type="AN" />
+        <field id="24" name="RFIC" description="MCO Reason Issue" start="137" length="1" type="AN" />
+        <field id="25" name="RFID" description="Tour/Routing" start="138" length="86" type="AN" />
+        <field id="26" name="OAAI" description="Statement Info - DK Number - Invoice Number" start="224" length="50" type="AN" />
+        <field id="27" name="DISI" description="Data Input Status" start="274" length="1" type="AN" />
+        <field id="28" name="WAVR" description="Refund Reason Code" start="275" length="6" type="AN" />
+        <field id="29" name="BERA" description="Exchange Rate" start="281" length="13" type="AN" />
+        <field id="30" name="ICDN" description="Cross-reference Document Number" start="294" length="15" type="AN" />
+        <field id="31" name="CDRT" description="Cross-reference Doc Number Check-Digit" start="309" length="1" type="AN" />
+        <field id="32" name="RBKI" description="Rebooking Indicator - #1" start="310" length="1" type="AN" />
+        <field id="33" name="RBKI" description="Rebooking Indicator - #2" start="311" length="1" type="AN" />
+        <field id="34" name="RBKI" description="Rebooking Indicator - #3" start="312" length="1" type="AN" />
+        <field id="35" name="RBKI" description="Rebooking Indicator - #4" start="313" length="1" type="AN" />
+        <field id="36" name="FILL" description="Filler" start="314" length="82" type="AN" />
+        <field id="37" name="PLTC" description="Plating Carrier" start="396" length="4" type="AN" />
+        <field id="38" name="FILL" description="Filler" start="400" length="1" type="AN" />
+    </record>
+
+    <record name="27" alias="R27" description="Prepaid Ticket Advice (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check-Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check-Digit" start="42" length="1" type="I" />
+        <field id="7" name="MSP1" description="PTA Special Remarks" start="43" length="200" type="AN" />
+        <field id="8" name="MAM1" description="PTA Amount Data - 1" start="243" length="50" type="AN" />
+        <field id="9" name="MAM2" description="PTA Amount Data - 2" start="293" length="50" type="AN" />
+        <field id="10" name="MAM3" description="PTA Amount Data - 3" start="343" length="50" type="AN" />
+        <field id="11" name="IDCI" description="PTA Issue Instructions" start="393" length="1" type="AN" />
+        <field id="12" name="FILL" description="Filler" start="394" length="2" type="AN" />
+        <field id="13" name="PLTC" description="Plating Carrier" start="396" length="4" type="AN" />
+        <field id="14" name="FILL" description="Filler" start="400" length="1" type="AN" />
+    </record>
+
+    <record name="28" alias="R28" description="Refunds and Vouchers (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check-Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check-Digit" start="42" length="1" type="I" />
+        <field id="7" name="PADR" description="Purchaser Address" start="43" length="30" type="AN" />
+        <field id="8" name="PAPT" description="Purchaser Apartment" start="73" length="30" type="AN" />
+        <field id="9" name="PCTP" description="Purchaser City" start="103" length="30" type="AN" />
+        <field id="10" name="PSTA" description="Purchaser State" start="133" length="30" type="AN" />
+        <field id="11" name="PZIP" description="Purchaser Zip Code" start="163" length="10" type="AN" />
+        <field id="12" name="FBCF" description="Fare Basis Code - From" start="173" length="16" type="AN" />
+        <field id="13" name="FBCT" description="Fare Basis Code - To" start="189" length="16" type="AN" />
+        <field id="14" name="CURP" description="Base Fare Paid Currency" start="205" length="3" type="AN" />
+        <field id="15" name="BFPA" description="Base Fare Paid Amount" start="208" length="11" type="AN" />
+        <field id="16" name="CURP" description="Base Fare Used Currency" start="219" length="3" type="AN" />
+        <field id="17" name="BFUA" description="Base Fare Used Amount" start="222" length="11" type="AN" />
+        <field id="18" name="BRLP" description="Base Refund Less Penalty" start="233" length="8" type="AN" />
+        <field id="19" name="TTRA" description="Total Tax Refund Amount" start="241" length="11" type="AN" />
+        <field id="20" name="TTRC" description="Total Tax Refund Code" start="252" length="2" type="AN" />
+        <field id="21" name="DTYP" description="Document Type" start="254" length="3" type="AN" />
+        <field id="22" name="VTRT" description="Voucher Trans Type" start="257" length="2" type="AN" />
+        <field id="23" name="CURP" description="Voucher Currency" start="259" length="3" type="AN" />
+        <field id="24" name="VIND" description="Voucher Indicator" start="262" length="2" type="AN" />
+        <field id="25" name="RSEL" description="Refund Selection" start="264" length="1" type="AN" />
+        <field id="26" name="STKI" description="Strike-Related Indicator" start="265" length="1" type="AN" />
+        <field id="27" name="ECPN" description="User Exchange Coupon Numbers" start="266" length="19" type="AN" />
+        <field id="28" name="PYTP" description="Payment Type TDS" start="285" length="3" type="AN" />
+        <field id="29" name="RFTP" description="Refund Type" start="288" length="1" type="AN" />
+        <field id="30" name="OUTV" description="OU Voucher Text" start="289" length="27" type="AN" />
+        <field id="31" name="FILL" description="Filler" start="316" length="80" type="AN" />
+        <field id="32" name="PLTC" description="Plating Carrier" start="396" length="4" type="AN" />
+        <field id="33" name="FILL" description="Filler" start="400" length="1" type="AN" />
+    </record>
+
+    <record name="29" alias="R29" description="Agency Miscellaneous Charge Order (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check-Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check-Digit" start="42" length="1" type="I" />
+        <field id="7" name="PLID" description="Print Line ID - #1" start="43" length="1" type="AN" />
+        <field id="8" name="PLTX" description="Print Line - #1" start="44" length="86" type="AN" />
+        <field id="9" name="PLID" description="Print Line ID - #2" start="130" length="1" type="AN" />
+        <field id="10" name="PLTX" description="Print Line - #2" start="131" length="86" type="AN" />
+        <field id="11" name="PLID" description="Print Line ID - #3" start="217" length="1" type="AN" />
+        <field id="12" name="PLTX" description="Print Line - #3" start="218" length="86" type="AN" />
+        <field id="13" name="PLID" description="Print Line ID - #4" start="304" length="1" type="AN" />
+        <field id="14" name="PLTX" description="Print Line - #4" start="305" length="86" type="AN" />
+        <field id="15" name="FILL" description="Filler" start="391" length="5" type="AN" />
+        <field id="16" name="PLTC" description="Plating Carrier" start="396" length="4" type="AN" />
+        <field id="17" name="FILL" description="Filler" start="400" length="1" type="AN" />
+    </record>
+
+    <record name="30" alias="R30" description="Additional Payment/Net and Commission Information (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="INVD" description="Invoice Date" start="43" length="6" type="N" />
+        <field id="8" name="INVN" description="Invoice Number" start="49" length="14" type="AN" />
+        <field id="9" name="REMT" description="Remittance Amount" start="63" length="11" type="N" />
+        <field id="10" name="INVA" description="Invoice Amount" start="74" length="11" type="N" />
+        <field id="11" name="CCSQ" description="Credit Card Sequence" start="85" length="10" type="AN" />
+        <field id="12" name="RISN" description="Relative Invoice Sequence Number" start="95" length="3" type="AN" />
+        <field id="13" name="FILL" description="Filler" start="98" length="146" type="AN" />
+        <field id="14" name="FPSN" description="Form of Payment Sequence Number" start="244" length="1" type="N" />
+        <field id="15" name="COBL" description="Commissionable Amount" start="245" length="11" type="N" />
+        <field id="16" name="LREP" description="Late Reporting Penalty" start="256" length="11" type="N" />
+        <field id="17" name="NTFA" description="Net Fare Amount" start="267" length="11" type="N" />
+        <field id="18" name="SPAM" description="Supplementary Amount" start="278" length="11" type="N" />
+        <field id="19" name="SPRT" description="Supplementary Rate" start="289" length="5" type="N" />
+        <field id="20" name="SPTP" description="Supplementary Type" start="294" length="6" type="AN" />
+        <field id="21" name="TCTP" description="Tax on Commission Type" start="300" length="6" type="AN" />
+        <field id="22" name="TOCA" description="Tax on Commission Amount" start="306" length="11" type="N" />
+        <field id="23" name="TCTP" description="Tax on Commission Type" start="317" length="6" type="AN" />
+        <field id="24" name="TOCA" description="Tax on Commission Amount" start="323" length="11" type="N" />
+        <field id="25" name="TCTP" description="Tax on Commission Type" start="334" length="6" type="AN" />
+        <field id="26" name="TOCA" description="Tax on Commission Amount" start="340" length="11" type="N" />
+        <field id="27" name="TCTP" description="Tax on Commission Type" start="351" length="6" type="AN" />
+        <field id="28" name="TOCA" description="Tax on Commission Amount" start="357" length="11" type="N" />
+        <field id="29" name="CUTP" description="Currency Type" start="368" length="4" type="AN" />
+        <field id="30" name="FILL" description="Filler" start="372" length="11" type="AN" />
+        <field id="31" name="NTSI" description="Neutral Ticketing Systems Identifier" start="383" length="4" type="AN" />
+        <field id="32" name="SFAM" description="Signed For Amount" start="387" length="11" type="N" />
+        <field id="33" name="FILL" description="Filler" start="398" length="3" type="AN" />
+    </record>
+
+    <record name="31" alias="R31" description="PTA Purchasers Info (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check-Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check-Digit" start="42" length="1" type="I" />
+        <field id="7" name="PLID" description="Print Line ID - #1" start="43" length="1" type="AN" />
+        <field id="8" name="SPLN" description="Print Line - #1" start="44" length="34" type="AN" />
+        <field id="9" name="PLID" description="Print Line ID - #2" start="78" length="1" type="AN" />
+        <field id="10" name="SPLN" description="Print Line - #2" start="79" length="34" type="AN" />
+        <field id="11" name="PLID" description="Print Line ID - #3" start="113" length="1" type="AN" />
+        <field id="12" name="SPLN" description="Print Line - #3" start="114" length="34" type="AN" />
+        <field id="13" name="PLID" description="Print Line ID - #4" start="148" length="1" type="AN" />
+        <field id="14" name="SPLN" description="Print Line - #4" start="149" length="34" type="AN" />
+        <field id="15" name="PLID" description="Print Line ID - #5" start="183" length="1" type="AN" />
+        <field id="16" name="SPLN" description="Print Line - #5" start="184" length="34" type="AN" />
+        <field id="17" name="PLID" description="Print Line ID - #6" start="218" length="1" type="AN" />
+        <field id="18" name="SPLN" description="Print Line - #6" start="219" length="34" type="AN" />
+        <field id="19" name="FILL" description="Filler" start="253" length="143" type="AN" />
+        <field id="20" name="PLTC" description="Plating Carrier" start="396" length="4" type="AN" />
+        <field id="21" name="FILL" description="Filler" start="400" length="1" type="AN" />
+    </record>
+
+    <record name="32" alias="R32" description="Transaction Header Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="TREF" description="Transaction Reference Number" start="43" length="18" type="AN" />
+        <field id="8" name="TREC" description="Transaction Record Counter" start="61" length="3" type="N" />
+        <field id="9" name="FILL" description="Filler" start="64" length="1" type="AN" />
+        <field id="10" name="CARF" description="Commercial Agreement Reference" start="65" length="10" type="AN" />
+        <field id="11" name="DISI" description="Data Input Status Indicator" start="75" length="1" type="AN" />
+        <field id="12" name="BAED" description="Billing Analysis Ending Date" start="76" length="6" type="N" />
+        <field id="13" name="DYRI" description="Dynamic Run Identifier" start="82" length="1" type="AN" />
+        <field id="14" name="DIRD" description="Date of Issue Refunded Document" start="83" length="6" type="N" />
+        <field id="15" name="MLOC" description="Multi-Location Identifier" start="89" length="3" type="AN" />
+        <field id="16" name="PCYC" description="Processing Cycle Identifier" start="92" length="6" type="AN" />
+        <field id="17" name="PDAI" description="Processing Date Identifier" start="98" length="4" type="AN" />
+        <field id="18" name="REVN" description="Handbook Revision Number" start="102" length="3" type="N" />
+        <field id="19" name="BSPI" description="BSP Identifier" start="105" length="3" type="AN" />
+        <field id="20" name="TPST" description="Test/Production Status" start="108" length="4" type="AN" />
+        <field id="21" name="PPED" description="Processing Period Ending Date" start="112" length="6" type="AN" />
+        <field id="22" name="RPDA" description="Reporting Period Ending Date" start="118" length="6" type="N" />
+        <field id="23" name="TRMC" description="Transaction Message Code" start="124" length="4" type="AN" />
+        <field id="24" name="FILL" description="Filler" start="128" length="44" type="AN" />
+        <field id="25" name="BOXB" description="Box/Batch" start="172" length="3" type="AN" />
+        <field id="26" name="BOXS" description="Box/Batch Sequence Number" start="175" length="3" type="AN" />
+        <field id="27" name="CERT" description="Certificate Number" start="178" length="19" type="AN" />
+        <field id="28" name="TRNC" description="Transaction Code" start="197" length="4" type="AN" />
+        <field id="29" name="INSN" description="Invoice Sequence Number" start="201" length="5" type="AN" />
+        <field id="30" name="FILL" description="Filler" start="206" length="195" type="AN" />
+    </record>
+
+    <record name="50" alias="R50" description="Usage file record">
+        <field id="1" name="RCID" description="Record identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/document number" start="11" length="15" type="AN" />
+        <field id="4" name="BMYR" description="Billing month and year" start="26" length="4" type="N" />
+        <field id="5" name="COUN" description="Coupon number" start="30" length="1" type="AN" />
+        <field id="6" name="COUN" description="Coupon Number" start="31" length="1" type="AN" />
+        <field id="7" name="COUN" description="Coupon Number" start="32" length="1" type="AN" />
+        <field id="8" name="COUN" description="Coupon Number" start="33" length="1" type="AN" />
+        <field id="9" name="TTYP" description="Transaction type" start="34" length="1" type="AN" />
+        <field id="10" name="PSET" description="E-Ticket indicator" start="35" length="2" type="AN" />
+        <field id="11" name="ORAC" description="Used Coupon/Segment Origin Airport/City" start="37" length="5" type="A" />
+        <field id="12" name="DSTC" description="Used Coupon/Segment Destination Airport/City" start="42" length="5" type="A" />
+        <field id="13" name="CARR" description="Used Coupon/Segment Carrier" start="47" length="4" type="AN" />
+        <field id="14" name="MFTN" description="Used Coupon/Segment Mktg Flight Number" start="51" length="5" type="AN" />
+        <field id="15" name="CLSC" description="Used Coupon/Segment Tktg Class of Service" start="56" length="2" type="A" />
+        <field id="16" name="FTDA" description="Used Coupon/Segment Flight Date" start="58" length="5" type="AN" />
+        <field id="17" name="OPER" description="USED COUPON OPERATING/UPLIFTING" start="63" length="3" type="AN" />
+        <field id="18" name="OFTN" description="Used Coupon Operating Flight Number" start="66" length="5" type="AN" />
+        <field id="19" name="ESAC" description="Settlement authorization code" start="71" length="14" type="AN" />
+        <field id="20" name="RQTP" description="Request type" start="85" length="1" type="AN" />
+        <field id="21" name="CFLN" description="Cabin Class Flown" start="86" length="1" type="AN" />
+        <field id="22" name="FILL" description="Filler" start="87" length="6" type="AN" />
+        <field id="23" name="ORAC" description="Used Coupon/Segment Origin Airport/City" start="93" length="5" type="A" />
+        <field id="24" name="DSTC" description="Used Coupon/Segment Destination Airport/City" start="98" length="5" type="A" />
+        <field id="25" name="CARR" description="Used Coupon/Segment Carrier" start="103" length="4" type="AN" />
+        <field id="26" name="MFTN" description="Used Coupon/Segment Mktg Flight Number" start="107" length="5" type="AN" />
+        <field id="27" name="CLSC" description="Used Coupon/Segment Tktg Class of Service" start="112" length="2" type="A" />
+        <field id="28" name="FTDA" description="Used Coupon/Segment Flight Date" start="114" length="5" type="AN" />
+        <field id="29" name="OPER" description="Used Coupon Operating/Uplifting Carrier" start="119" length="3" type="AN" />
+        <field id="30" name="OFTN" description="Used Coupon Operating Flight Number" start="122" length="5" type="AN" />
+        <field id="31" name="ESAC" description="Settlement Authorization Code" start="127" length="14" type="AN" />
+        <field id="32" name="RQTP" description="Request Type" start="141" length="1" type="AN" />
+        <field id="33" name="CFLN" description="Cabin Class Flown" start="142" length="1" type="AN" />
+        <field id="34" name="FILL" description="Filler" start="143" length="6" type="AN" />
+        <field id="35" name="ORAC" description="Used Coupon/Segment Origin Airport/City" start="149" length="5" type="A" />
+        <field id="36" name="DSTC" description="Used Coupon/Segment Destination Airport/City" start="154" length="5" type="A" />
+        <field id="37" name="CARR" description="Used Coupon/Segment Carrier" start="159" length="4" type="AN" />
+        <field id="38" name="MFTN" description="Used Coupon/Segment Mktg Flight Number" start="163" length="5" type="AN" />
+        <field id="39" name="CLSC" description="Used Coupon/Segment Tktg Class of Service" start="168" length="2" type="A" />
+        <field id="40" name="FTDA" description="Used Coupon/Segment Flight Date" start="170" length="5" type="AN" />
+        <field id="41" name="OPER" description="Used Coupon Operating/Uplifting Carrier" start="175" length="3" type="AN" />
+        <field id="42" name="OFTN" description="Used Coupon Operating Flight Number" start="178" length="5" type="AN" />
+        <field id="43" name="ESAC" description="Settlement Authorization Code" start="183" length="14" type="AN" />
+        <field id="44" name="RQTP" description="Request Type" start="197" length="1" type="AN" />
+        <field id="45" name="CFLN" description="Cabin Class Flown" start="198" length="1" type="AN" />
+        <field id="46" name="FILL" description="Filler" start="199" length="6" type="AN" />
+        <field id="47" name="ORAC" description="Used Coupon/Segment Origin Airport/City" start="205" length="5" type="A" />
+        <field id="48" name="DSTC" description="Used Coupon/Segment Destination Airport/City" start="210" length="5" type="A" />
+        <field id="49" name="CARR" description="Used Coupon/Segment Carrier" start="215" length="4" type="AN" />
+        <field id="50" name="MFTN" description="Used Coupon/Segment Mktg Flight Number" start="219" length="5" type="AN" />
+        <field id="51" name="CLSC" description="Used Coupon/Segment Tktg Class of Service" start="224" length="2" type="A" />
+        <field id="52" name="FTDA" description="Used Coupon/Segment Flight Date" start="226" length="5" type="AN" />
+        <field id="53" name="OPER" description="Used Coupon Operating/Uplifting Carrier" start="231" length="3" type="AN" />
+        <field id="54" name="OFTN" description="Used Coupon Operating Flight Number" start="234" length="5" type="AN" />
+        <field id="55" name="ESAC" description="Settlement Authorization Code" start="239" length="14" type="AN" />
+        <field id="56" name="RQTP" description="Request Type" start="253" length="1" type="AN" />
+        <field id="57" name="CFLN" description="Cabin Class Flown" start="254" length="1" type="AN" />
+        <field id="58" name="FILL" description="Filler" start="255" length="6" type="AN" />
+        <field id="59" name="ERRR" description="Error Type" start="261" length="1" type="AN" />
+        <field id="60" name="INTR" description="Internal Use only" start="262" length="1" type="AN" />
+        <field id="61" name="FILL" description="Filler" start="263" length="138" type="AN" />
+    </record>
+
+    <record name="80" alias="R80" description="Fare Break Information Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="PVDR" description="Record Provider" start="43" length="1" type="AN" />
+        <field id="8" name="FILL" description="Filler" start="44" length="1" type="AN" />
+        <field id="9" name="FCFT" description="Tariff" start="45" length="5" type="AN" />
+        <field id="10" name="FCRC" description="Fare Owner Carrier" start="50" length="2" type="AN" />
+        <field id="11" name="FCFR" description="Fare Rule Number" start="52" length="4" type="AN" />
+        <field id="12" name="FCFC" description="Category Used to Generate Fare" start="56" length="2" type="AN" />
+        <field id="13" name="FCFC" description="Category Used to Generate Fare" start="58" length="2" type="AN" />
+        <field id="14" name="FCFC" description="Category Used to Generate Fare" start="60" length="2" type="AN" />
+        <field id="15" name="FCFC" description="Category Used to Generate Fare" start="62" length="2" type="AN" />
+        <field id="16" name="FCFC" description="Category Used to Generate Fare" start="64" length="2" type="AN" />
+        <field id="17" name="FCFC" description="Category Used to Generate Fare" start="66" length="2" type="AN" />
+        <field id="18" name="FCOR" description="Fare Component Origin" start="68" length="3" type="AN" />
+        <field id="19" name="FCDS" description="Fare Component Destination" start="71" length="3" type="AN" />
+        <field id="20" name="FCPX" description="Passenger Type Code Input" start="74" length="3" type="AN" />
+        <field id="21" name="FCPP" description="Passenger Type Code Priced" start="77" length="3" type="AN" />
+        <field id="22" name="FCPA" description="Passenger Age in Years" start="80" length="3" type="N" />
+        <field id="23" name="FCFF" description="Frequent Flyer Status Code" start="83" length="1" type="AN" />
+        <field id="24" name="FCGO" description="Passenger Group Occurrence" start="84" length="2" type="N" />
+        <field id="25" name="FCGT" description="Passenger Group Total" start="86" length="2" type="N" />
+        <field id="26" name="FCAC" description="Corporate Account Entered" start="88" length="20" type="AN" />
+        <field id="27" name="FCFD" description="Fare Component Fare Basis Code" start="108" length="8" type="AN" />
+        <field id="28" name="FCTR" description="Requested Ticket Designator" start="116" length="6" type="AN" />
+        <field id="29" name="FCTD" description="Returned Ticket Designator" start="122" length="6" type="AN" />
+        <field id="30" name="FCSI" description="Side Trip Indicator" start="128" length="1" type="AN" />
+        <field id="31" name="FCOW" description="One Way/Round Trip Indicator" start="129" length="1" type="AN" />
+        <field id="32" name="FILL" description="Filler" start="130" length="1" type="AN" />
+        <field id="33" name="FCIF" description="Inbound Fare" start="131" length="1" type="AN" />
+        <field id="34" name="FILL" description="Filler" start="132" length="1" type="AN" />
+        <field id="35" name="FCPN" description="Public Private/Bulk" start="133" length="1" type="AN" />
+        <field id="36" name="FCRF" description="Routing/Mileage Fare" start="134" length="1" type="AN" />
+        <field id="37" name="FCTC" description="Fare Component Ticket Code" start="135" length="2" type="AN" />
+        <field id="38" name="FCDB" description="Fare Component Differential Fare Basis" start="137" length="15" type="AN" />
+        <field id="39" name="FILL" description="Filler" start="152" length="10" type="AN" />
+        <field id="40" name="FCFA" description="Filing Currency Fare Break Amount" start="162" length="11" type="N" />
+        <field id="41" name="FCNA" description="Filing Currency Net Fare Break Amount" start="173" length="11" type="N" />
+        <field id="42" name="FCGN" description="Gross NUC/Local Fare" start="184" length="11" type="N" />
+        <field id="43" name="FCNN" description="Net NUC/Local Fare" start="195" length="11" type="N" />
+        <field id="44" name="FCSR" description="Mileage Surcharge Amount" start="206" length="1" type="AN" />
+        <field id="45" name="FCWI" description="One Way Back-Haul Indicator" start="207" length="1" type="AN" />
+        <field id="46" name="FCWL" description="One Way Back-Haul Locations" start="208" length="12" type="AN" />
+        <field id="47" name="FCWA" description="One Way Back-Haul Amount" start="220" length="11" type="N" />
+        <field id="48" name="FCOI" description="Higher Intermediate Point Indicator" start="231" length="1" type="AN" />
+        <field id="49" name="FCOL" description="Higher Intermediate Point Locations" start="232" length="6" type="AN" />
+        <field id="50" name="FCOA" description="Higher Intermediate Point Amount" start="238" length="11" type="N" />
+        <field id="51" name="FCDI" description="Differential Indicator" start="249" length="1" type="AN" />
+        <field id="52" name="FCDH" description="Differential Cities" start="250" length="6" type="AN" />
+        <field id="53" name="FCDF" description="Differential Amount" start="256" length="11" type="N" />
+        <field id="54" name="FILL" description="Filler" start="267" length="18" type="AN" />
+        <field id="55" name="CUTP" description="Currency Type (Constructed Fare)" start="285" length="4" type="AN" />
+        <field id="56" name="CUTP" description="Currency Type (Record 80)" start="289" length="4" type="AN" />
+        <field id="57" name="FCSB" description="Filing Currency Sell Fare Break Amount" start="293" length="11" type="N" />
+        <field id="58" name="FCSN" description="Sell NUC/Local Fare" start="304" length="11" type="N" />
+        <field id="59" name="CUTP" description="Currency Type (Sell Fare Filed)" start="315" length="4" type="AN" />
+        <field id="60" name="CUTP" description="Currency Type (Net Fare Filed)" start="319" length="4" type="AN" />
+        <field id="61" name="FILL" description="Filler" start="323" length="55" type="AN" />
+        <field id="62" name="FCPU" description="Priceable Unit Number" start="378" length="2" type="N" />
+        <field id="63" name="FCFB" description="Fare Component Number" start="380" length="2" type="N" />
+        <field id="64" name="FILL" description="Filler" start="382" length="18" type="AN" />
+        <field id="65" name="FCID" description="Fare Calculation Set Identifier" start="400" length="1" type="AN" />
+    </record>
+
+    <record name="81" alias="R81" description="Coupon Related Information Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="COUN" description="Coupon Number" start="43" length="1" type="N" />
+        <field id="8" name="PVDR" description="Record Provider" start="44" length="1" type="AN" />
+        <field id="9" name="FILL" description="Filler" start="45" length="1" type="AN" />
+        <field id="10" name="OCAR" description="Coupon Operating Carrier" start="46" length="2" type="AN" />
+        <field id="11" name="FCEQ" description="Equipment Code" start="48" length="3" type="AN" />
+        <field id="12" name="FCCF" description="Cabin Flown" start="51" length="1" type="AN" />
+        <field id="13" name="FCRB" description="Operating Carrier RBD" start="52" length="1" type="AN" />
+        <field id="14" name="FCMA" description="Multi Airport Indicator" start="53" length="3" type="AN" />
+        <field id="15" name="FCTI" description="Type Indicator" start="56" length="1" type="AN" />
+        <field id="16" name="FCSA" description="Stopover Amount" start="57" length="8" type="N" />
+        <field id="17" name="FCTA" description="Transfer Amount" start="65" length="8" type="N" />
+        <field id="18" name="TXSR" description="Charge Indicator" start="73" length="2" type="N" />
+        <field id="19" name="FCSC" description="Surcharge Amount" start="75" length="8" type="N" />
+        <field id="20" name="TXSR" description="Charge Indicator" start="83" length="2" type="N" />
+        <field id="21" name="FCSC" description="Surcharge Amount" start="85" length="8" type="N" />
+        <field id="22" name="TXSR" description="Charge Indicator" start="93" length="2" type="N" />
+        <field id="23" name="FCSC" description="Surcharge Amount" start="95" length="8" type="N" />
+        <field id="24" name="FCEX" description="Extra Mileage Amount" start="103" length="8" type="N" />
+        <field id="25" name="FCPU" description="Priceable Unit Number" start="111" length="2" type="N" />
+        <field id="26" name="FCFB" description="Fare Component Number" start="113" length="2" type="N" />
+        <field id="27" name="FCUP" description="Unticketed Point Airport Code" start="115" length="5" type="AN" />
+        <field id="28" name="FCUD" description="Unticketed Point Date of Departure" start="120" length="5" type="AN" />
+        <field id="29" name="FCUT" description="Unticketed Point Time of Departure" start="125" length="5" type="AN" />
+        <field id="30" name="FILL" description="Filler" start="130" length="2" type="AN" />
+        <field id="31" name="COUN" description="Coupon Number" start="132" length="1" type="N" />
+        <field id="32" name="FILL" description="Filler" start="133" length="2" type="AN" />
+        <field id="33" name="OCAR" description="Coupon Operating Carrier" start="135" length="2" type="AN" />
+        <field id="34" name="FCEQ" description="Equipment Code" start="137" length="3" type="AN" />
+        <field id="35" name="FCCF" description="Cabin Flown" start="140" length="1" type="AN" />
+        <field id="36" name="FCRB" description="Operating Carrier RBD" start="141" length="1" type="AN" />
+        <field id="37" name="FCMA" description="Multi Airport Indicator" start="142" length="3" type="AN" />
+        <field id="38" name="FCTI" description="Type Indicator" start="145" length="1" type="AN" />
+        <field id="39" name="FCSA" description="Stopover Amount" start="146" length="8" type="N" />
+        <field id="40" name="FCTA" description="Transfer Amount" start="154" length="8" type="N" />
+        <field id="41" name="TXSR" description="Charge Indicator" start="162" length="2" type="N" />
+        <field id="42" name="FCSC" description="Surcharge Amount" start="164" length="8" type="N" />
+        <field id="43" name="TXSR" description="Charge Indicator" start="172" length="2" type="N" />
+        <field id="44" name="FCSC" description="Surcharge Amount" start="174" length="8" type="N" />
+        <field id="45" name="TXSR" description="Charge Indicator" start="182" length="2" type="N" />
+        <field id="46" name="FCSC" description="Surcharge Amount" start="184" length="8" type="N" />
+        <field id="47" name="FCEX" description="Extra Mileage Amount" start="192" length="8" type="N" />
+        <field id="48" name="FCPU" description="Priceable Unit Number" start="200" length="2" type="N" />
+        <field id="49" name="FCFB" description="Fare Component Number" start="202" length="2" type="N" />
+        <field id="50" name="FCUP" description="Prior Unticketed Point Airport Code" start="204" length="5" type="AN" />
+        <field id="51" name="FCUD" description="Prior Unticketed Point Date of Departure" start="209" length="5" type="AN" />
+        <field id="52" name="FCUT" description="" start="214" length="5" type="AN" />
+        <field id="53" name="FILL" description="Filler" start="219" length="2" type="AN" />
+        <field id="54" name="COUN" description="Coupon Number" start="221" length="1" type="N" />
+        <field id="55" name="FILL" description="Filler" start="222" length="2" type="AN" />
+        <field id="56" name="OCAR" description="Coupon Operating Carrier" start="224" length="2" type="AN" />
+        <field id="57" name="FCEQ" description="Equipment Code" start="226" length="3" type="AN" />
+        <field id="58" name="FCCF" description="Cabin Flown" start="229" length="1" type="AN" />
+        <field id="59" name="FCRB" description="Operating Carrier RBD" start="230" length="1" type="AN" />
+        <field id="60" name="FCMA" description="Multi Airport Indicator" start="231" length="3" type="AN" />
+        <field id="61" name="FCTI" description="Type Indicator" start="234" length="1" type="AN" />
+        <field id="62" name="FCSA" description="Stopover Amount" start="235" length="8" type="N" />
+        <field id="63" name="FCTA" description="Transfer Amount" start="243" length="8" type="N" />
+        <field id="64" name="TXSR" description="Charge Indicator" start="251" length="2" type="N" />
+        <field id="65" name="FCSC" description="Surcharge Amount" start="253" length="8" type="N" />
+        <field id="66" name="TXSR" description="Charge Indicator" start="261" length="2" type="N" />
+        <field id="67" name="FCSC" description="Surcharge Amount" start="263" length="8" type="N" />
+        <field id="68" name="TXSR" description="Charge Indicator" start="271" length="2" type="N" />
+        <field id="69" name="FCSC" description="Surcharge Amount" start="273" length="8" type="N" />
+        <field id="70" name="FCEX" description="Extra Mileage Amount" start="281" length="8" type="N" />
+        <field id="71" name="FCPU" description="Priceable Unit Number" start="289" length="2" type="N" />
+        <field id="72" name="FCFB" description="Fare Component Number" start="291" length="2" type="N" />
+        <field id="73" name="FCUP" description="Prior Unticketed Point Airport Code" start="293" length="5" type="AN" />
+        <field id="74" name="FCUD" description="Prior Unticketed Point Date of Departure" start="298" length="5" type="AN" />
+        <field id="75" name="FCUT" description="" start="303" length="5" type="AN" />
+        <field id="76" name="FILL" description="Filler" start="308" length="2" type="AN" />
+        <field id="77" name="COUN" description="Coupon Number" start="310" length="1" type="N" />
+        <field id="78" name="FILL" description="Filler" start="311" length="2" type="AN" />
+        <field id="79" name="OCAR" description="Coupon Operating Carrier" start="313" length="2" type="AN" />
+        <field id="80" name="FCEQ" description="Equipment Code" start="315" length="3" type="AN" />
+        <field id="81" name="FCCF" description="Cabin Flown" start="318" length="1" type="AN" />
+        <field id="82" name="FCRB" description="Operating Carrier RBD" start="319" length="1" type="AN" />
+        <field id="83" name="FCMA" description="Multi Airport Indicator" start="320" length="3" type="AN" />
+        <field id="84" name="FCTI" description="Type Indicator" start="323" length="1" type="AN" />
+        <field id="85" name="FCSA" description="Stopover Amount" start="324" length="8" type="N" />
+        <field id="86" name="FCTA" description="Transfer Amount" start="332" length="8" type="N" />
+        <field id="87" name="TXSR" description="Charge Indicator" start="340" length="2" type="N" />
+        <field id="88" name="FCSC" description="Surcharge Amount" start="342" length="8" type="N" />
+        <field id="89" name="TXSR" description="Charge Indicator" start="350" length="2" type="N" />
+        <field id="90" name="FCSC" description="Surcharge Amount" start="352" length="8" type="N" />
+        <field id="91" name="TXSR" description="Charge Indicator" start="360" length="2" type="N" />
+        <field id="92" name="FCSC" description="Surcharge Amount" start="362" length="8" type="N" />
+        <field id="93" name="FCEX" description="Extra Mileage Amount" start="370" length="8" type="N" />
+        <field id="94" name="FCPU" description="Priceable Unit Number" start="378" length="2" type="N" />
+        <field id="95" name="FCFB" description="Fare Component Number" start="380" length="2" type="N" />
+        <field id="96" name="FCUP" description="Prior Unticketed Point Airport Code" start="382" length="5" type="AN" />
+        <field id="97" name="FCUD" description="Prior Unticketed Point Date of Departure" start="387" length="5" type="AN" />
+        <field id="98" name="FCUT" description="" start="392" length="5" type="AN" />
+        <field id="99" name="CUTP" description="Currency Type (Record 81)" start="397" length="4" type="AN" />
+    </record>
+
+    <record name="82" alias="R82" description="Priceable Unit/Ticket Related Information Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="FILL" description="Filler" start="43" length="1" type="AN" />
+        <field id="8" name="FCRO" description="Rate of Exchange (ROE)" start="44" length="14" type="AN" />
+        <field id="9" name="FCCR" description="Rate of Exchange Currency" start="58" length="5" type="AN" />
+        <field id="10" name="FCNT" description="NUC Value of Ticket" start="63" length="11" type="N" />
+        <field id="11" name="FCNV" description="Net Value of Ticket (in NUCS)" start="74" length="11" type="N" />
+        <field id="12" name="FCJT" description="Journey Turnaround Point" start="85" length="5" type="AN" />
+        <field id="13" name="FCCM" description="Circle Trip Minimum Indicator" start="90" length="1" type="AN" />
+        <field id="14" name="FCCL" description="Circle Trip Minimum Locations" start="91" length="6" type="AN" />
+        <field id="15" name="FCCA" description="Circle Trip Minimum Amount" start="97" length="11" type="N" />
+        <field id="16" name="FCMC" description="Minimum City Indicator" start="108" length="1" type="AN" />
+        <field id="17" name="FCML" description="Minimum City Locations" start="109" length="6" type="AN" />
+        <field id="18" name="FCAM" description="Minimum City Amount" start="115" length="11" type="N" />
+        <field id="19" name="FCRW" description="Round the World Indicator" start="126" length="1" type="AN" />
+        <field id="20" name="FCRL" description="Round the World Locations" start="127" length="6" type="AN" />
+        <field id="21" name="FCRA" description="Round the World Amount" start="133" length="11" type="N" />
+        <field id="22" name="FILL" description="Filler" start="144" length="18" type="AN" />
+        <field id="23" name="CUTP" description="Currency Type (Record 82)" start="162" length="4" type="AN" />
+        <field id="24" name="FCPR" description="Number of Previous Reissues" start="166" length="2" type="AN" />
+        <field id="25" name="FCEI" description="Exchange/Reissue Indicator" start="168" length="1" type="AN" />
+        <field id="26" name="FCBS" description="Bankers Selling Rate" start="169" length="13" type="AN" />
+        <field id="27" name="FCEN" description="Additional Endorsement Data" start="182" length="94" type="AN" />
+        <field id="28" name="FCPL" description="Ticket Plus/Less Qualifier" start="276" length="1" type="AN" />
+        <field id="29" name="FCPM" description="Ticket Plus/Less Amount" start="277" length="11" type="N" />
+        <field id="30" name="FCNU" description="Sell value of Ticket (in NUCS)" start="288" length="11" type="N" />
+        <field id="31" name="FILL" description="Filler" start="299" length="79" type="AN" />
+        <field id="32" name="FCPU" description="Priceable Unit Number" start="378" length="2" type="N" />
+        <field id="33" name="FILL" description="Filler" start="380" length="18" type="AN" />
+        <field id="34" name="PVDR" description="Record Provider" start="398" length="1" type="AN" />
+        <field id="35" name="FILL" description="Filler" start="399" length="1" type="AN" />
+        <field id="36" name="FCID" description="Fare Calculation Set Identifier" start="400" length="1" type="AN" />
+    </record>
+
+    <record name="83" alias="R83" description="Coupon Tax, Fee, Charge Information Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="TXCD" description="Tax Code" start="43" length="3" type="AN" />
+        <field id="8" name="TXSC" description="Tax Type/Sub Code" start="46" length="3" type="AN" />
+        <field id="9" name="TXOC" description="Tax Carrier/Owner Carrier" start="49" length="2" type="AN" />
+        <field id="10" name="TXRR" description="Rule Record Reference" start="51" length="2" type="AN" />
+        <field id="11" name="TXRS" description="Rule Sequence Number" start="53" length="7" type="N" />
+        <field id="12" name="TXTA" description="Charge Amount" start="60" length="11" type="N" />
+        <field id="13" name="TXSR" description="Charge Indicator" start="71" length="2" type="N" />
+        <field id="14" name="FILL" description="Filler" start="73" length="2" type="AN" />
+        <field id="15" name="TXCD" description="Tax Code" start="75" length="3" type="AN" />
+        <field id="16" name="TXSC" description="Tax Type/Sub Code" start="78" length="3" type="AN" />
+        <field id="17" name="TXOC" description="Tax Carrier/Owner Carrier" start="81" length="2" type="AN" />
+        <field id="18" name="TXRR" description="Rule Record Reference" start="83" length="2" type="AN" />
+        <field id="19" name="TXRS" description="Rule Sequence Number" start="85" length="7" type="N" />
+        <field id="20" name="TXTA" description="Charge Amount" start="92" length="11" type="N" />
+        <field id="21" name="TXSR" description="Charge Indicator" start="103" length="2" type="N" />
+        <field id="22" name="FILL" description="Filler" start="105" length="2" type="AN" />
+        <field id="23" name="TXCD" description="Tax Code" start="107" length="3" type="AN" />
+        <field id="24" name="TXSC" description="Tax Type/Sub Code" start="110" length="3" type="AN" />
+        <field id="25" name="TXOC" description="Tax Carrier/Owner Carrier" start="113" length="2" type="AN" />
+        <field id="26" name="TXRR" description="Rule Record Reference" start="115" length="2" type="AN" />
+        <field id="27" name="TXRS" description="Rule Sequence Number" start="117" length="7" type="N" />
+        <field id="28" name="TXTA" description="Charge Amount" start="124" length="11" type="N" />
+        <field id="29" name="TXSR" description="Charge Indicator" start="135" length="2" type="N" />
+        <field id="30" name="PVDR" description="Record Provider" start="137" length="1" type="AN" />
+        <field id="31" name="FILL" description="Filler" start="138" length="1" type="AN" />
+        <field id="32" name="COUN" description="Coupon Number" start="139" length="1" type="AN" />
+        <field id="33" name="TXCD" description="Tax Code" start="140" length="3" type="AN" />
+        <field id="34" name="TXSC" description="Tax Type/Sub Code" start="143" length="3" type="AN" />
+        <field id="35" name="TXOC" description="Tax Carrier/Owner Carrier" start="146" length="2" type="AN" />
+        <field id="36" name="TXRR" description="Rule Record Reference" start="148" length="2" type="AN" />
+        <field id="37" name="TXRS" description="Rule Sequence Number" start="150" length="7" type="N" />
+        <field id="38" name="TXTA" description="Charge Amount" start="157" length="11" type="N" />
+        <field id="39" name="TXSR" description="Charge Indicator" start="168" length="2" type="N" />
+        <field id="40" name="FILL" description="Filler" start="170" length="2" type="AN" />
+        <field id="41" name="TXCD" description="Tax Code" start="172" length="3" type="AN" />
+        <field id="42" name="TXSC" description="Tax Type/Sub Code" start="175" length="3" type="AN" />
+        <field id="43" name="TXOC" description="Tax Carrier/Owner Carrier" start="178" length="2" type="AN" />
+        <field id="44" name="TXRR" description="Rule Record Reference" start="180" length="2" type="AN" />
+        <field id="45" name="TXRS" description="Rule Sequence Number" start="182" length="7" type="N" />
+        <field id="46" name="TXTA" description="Charge Amount" start="189" length="11" type="N" />
+        <field id="47" name="TXSR" description="Charge Indicator" start="200" length="2" type="N" />
+        <field id="48" name="FILL" description="Filler" start="202" length="2" type="AN" />
+        <field id="49" name="COUN" description="Coupon Number" start="204" length="1" type="AN" />
+        <field id="50" name="TXCD" description="Tax Code" start="205" length="3" type="AN" />
+        <field id="51" name="TXSC" description="Tax Type/Sub Code" start="208" length="3" type="AN" />
+        <field id="52" name="TXOC" description="Tax Carrier/Owner Carrier" start="211" length="2" type="AN" />
+        <field id="53" name="TXRR" description="Rule Record Reference" start="213" length="2" type="AN" />
+        <field id="54" name="TXRS" description="Rule Sequence Number" start="215" length="7" type="N" />
+        <field id="55" name="TXTA" description="Charge Amount" start="222" length="11" type="N" />
+        <field id="56" name="TXSR" description="Charge Indicator" start="233" length="2" type="N" />
+        <field id="57" name="FILL" description="Filler" start="235" length="2" type="AN" />
+        <field id="58" name="TXCD" description="Tax Code" start="237" length="3" type="AN" />
+        <field id="59" name="TXSC" description="Tax Type/Sub Code" start="240" length="3" type="AN" />
+        <field id="60" name="TXOC" description="Tax Carrier/Owner Carrier" start="243" length="2" type="AN" />
+        <field id="61" name="TXRR" description="Rule Record Reference" start="245" length="2" type="AN" />
+        <field id="62" name="TXRS" description="Rule Sequence Number" start="247" length="7" type="N" />
+        <field id="63" name="TXTA" description="Charge Amount" start="254" length="11" type="N" />
+        <field id="64" name="TXSR" description="Charge Indicator" start="265" length="2" type="N" />
+        <field id="65" name="FILL" description="Filler" start="267" length="2" type="AN" />
+        <field id="66" name="COUN" description="Coupon Number" start="269" length="1" type="AN" />
+        <field id="67" name="TXCD" description="Tax Code" start="270" length="3" type="AN" />
+        <field id="68" name="TXSC" description="Tax Type/Sub Code" start="273" length="3" type="AN" />
+        <field id="69" name="TXOC" description="Tax Carrier/Owner Carrier" start="276" length="2" type="AN" />
+        <field id="70" name="TXRR" description="Rule Record Reference" start="278" length="2" type="AN" />
+        <field id="71" name="TXRS" description="Rule Sequence Number" start="280" length="7" type="N" />
+        <field id="72" name="TXTA" description="Charge Amount" start="287" length="11" type="N" />
+        <field id="73" name="TXSR" description="Charge Indicator" start="298" length="2" type="N" />
+        <field id="74" name="FILL" description="Filler" start="300" length="2" type="AN" />
+        <field id="75" name="TXCD" description="Tax Code" start="302" length="3" type="AN" />
+        <field id="76" name="TXSC" description="Tax Type/Sub Code" start="305" length="3" type="AN" />
+        <field id="77" name="TXOC" description="Tax Carrier/Owner Carrier" start="308" length="2" type="AN" />
+        <field id="78" name="TXRR" description="Rule Record Reference" start="310" length="2" type="AN" />
+        <field id="79" name="TXRS" description="Rule Sequence Number" start="312" length="7" type="N" />
+        <field id="80" name="TXTA" description="Charge Amount" start="319" length="11" type="N" />
+        <field id="81" name="TXSR" description="Charge Indicator" start="330" length="2" type="N" />
+        <field id="82" name="FILL" description="Filler" start="332" length="2" type="AN" />
+        <field id="83" name="COUN" description="Coupon Number" start="334" length="1" type="AN" />
+        <field id="84" name="TXCD" description="Tax Code" start="335" length="3" type="AN" />
+        <field id="85" name="TXSC" description="Tax Type/Sub Code" start="338" length="3" type="AN" />
+        <field id="86" name="TXOC" description="Tax Carrier/Owner Carrier" start="341" length="2" type="AN" />
+        <field id="87" name="TXRR" description="Rule Record Reference" start="343" length="2" type="AN" />
+        <field id="88" name="TXRS" description="Rule Sequence Number" start="345" length="7" type="N" />
+        <field id="89" name="TXTA" description="Charge Amount" start="352" length="11" type="N" />
+        <field id="90" name="TXSR" description="Charge Indicator" start="363" length="2" type="N" />
+        <field id="91" name="FILL" description="Filler" start="365" length="2" type="AN" />
+        <field id="92" name="TXCD" description="Tax Code" start="367" length="3" type="AN" />
+        <field id="93" name="TXSC" description="Tax Type/Sub Code" start="370" length="3" type="AN" />
+        <field id="94" name="TXOC" description="Tax Carrier/Owner Carrier" start="373" length="2" type="AN" />
+        <field id="95" name="TXRR" description="Rule Record Reference" start="375" length="2" type="AN" />
+        <field id="96" name="TXRS" description="Rule Sequence Number" start="377" length="7" type="N" />
+        <field id="97" name="TXTA" description="Charge Amount" start="384" length="11" type="N" />
+        <field id="98" name="TXSR" description="Charge Indicator" start="395" length="2" type="N" />
+        <field id="99" name="CUTP" description="Currency Type (Record 83)" start="397" length="4" type="AN" />
+    </record>
+
+    <record name="85" alias="R85" description="Coupon Schedules Information Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="COUN" description="Coupon Number" start="43" length="1" type="AN" />
+        <field id="8" name="SCAD" description="Arrival Day" start="44" length="1" type="AN" />
+        <field id="9" name="SCDO" description="Days of Operation" start="45" length="7" type="N" />
+        <field id="10" name="SCST" description="Stops" start="52" length="2" type="AN" />
+        <field id="11" name="SCPC" description="Passenger Class 1" start="54" length="1" type="AN" />
+        <field id="12" name="SCPC" description="Passenger Class 2" start="55" length="1" type="AN" />
+        <field id="13" name="SCPC" description="Passenger Class 3" start="56" length="1" type="AN" />
+        <field id="14" name="SCPC" description="Passenger Class 4" start="57" length="1" type="AN" />
+        <field id="15" name="SCPC" description="Passenger Class 5" start="58" length="1" type="AN" />
+        <field id="16" name="SCPC" description="Passenger Class 6" start="59" length="1" type="AN" />
+        <field id="17" name="SCPC" description="Passenger Class 7" start="60" length="1" type="AN" />
+        <field id="18" name="SCPC" description="Passenger Class 8" start="61" length="1" type="AN" />
+        <field id="19" name="SCPC" description="Passenger Class 9" start="62" length="1" type="AN" />
+        <field id="20" name="SCPC" description="Passenger Class 10" start="63" length="1" type="AN" />
+        <field id="21" name="SCLS" description="Longest Sector" start="64" length="1" type="AN" />
+        <field id="22" name="CSDP" description="Codeshare Data Probable" start="65" length="1" type="AN" />
+        <field id="23" name="FILL" description="Filler" start="66" length="6" type="AN" />
+        <field id="24" name="SCAO" description="Aircraft Owner" start="72" length="3" type="AN" />
+        <field id="25" name="SCFR" description="Full Routing" start="75" length="45" type="AN" />
+        <field id="26" name="SCDS" description="Shared Airline Designator" start="120" length="3" type="AN" />
+        <field id="27" name="FILL" description="Filler" start="123" length="9" type="AN" />
+        <field id="28" name="COUN" description="Coupon Number" start="132" length="1" type="AN" />
+        <field id="29" name="SCAD" description="Arrival Day" start="133" length="1" type="AN" />
+        <field id="30" name="SCDO" description="Days of Operation" start="134" length="7" type="N" />
+        <field id="31" name="SCST" description="Stops" start="141" length="2" type="AN" />
+        <field id="32" name="SCPC" description="Passenger Class 1" start="143" length="1" type="AN" />
+        <field id="33" name="SCPC" description="Passenger Class 2" start="144" length="1" type="AN" />
+        <field id="34" name="SCPC" description="Passenger Class 3" start="145" length="1" type="AN" />
+        <field id="35" name="SCPC" description="Passenger Class 4" start="146" length="1" type="AN" />
+        <field id="36" name="SCPC" description="Passenger Class 5" start="147" length="1" type="AN" />
+        <field id="37" name="SCPC" description="Passenger Class 6" start="148" length="1" type="AN" />
+        <field id="38" name="SCPC" description="Passenger Class 7" start="149" length="1" type="AN" />
+        <field id="39" name="SCPC" description="Passenger Class 8" start="150" length="1" type="AN" />
+        <field id="40" name="SCPC" description="Passenger Class 9" start="151" length="1" type="AN" />
+        <field id="41" name="SCPC" description="Passenger Class 10" start="152" length="1" type="AN" />
+        <field id="42" name="SCLS" description="Longest Sector" start="153" length="1" type="AN" />
+        <field id="43" name="CSDP" description="Codeshare Data Probable" start="154" length="1" type="AN" />
+        <field id="44" name="FILL" description="Filler" start="155" length="6" type="AN" />
+        <field id="45" name="SCAO" description="Aircraft Owner" start="161" length="3" type="AN" />
+        <field id="46" name="SCFR" description="Full Routing" start="164" length="45" type="AN" />
+        <field id="47" name="SCDS" description="Shared Airline Designator" start="209" length="3" type="AN" />
+        <field id="48" name="FILL" description="Filler" start="212" length="9" type="AN" />
+        <field id="49" name="COUN" description="Coupon Number" start="221" length="1" type="AN" />
+        <field id="50" name="SCAD" description="Arrival Day" start="222" length="1" type="AN" />
+        <field id="51" name="SCDO" description="Days of Operation" start="223" length="7" type="N" />
+        <field id="52" name="SCST" description="Stops" start="230" length="2" type="AN" />
+        <field id="53" name="SCPC" description="Passenger Class 1" start="232" length="1" type="AN" />
+        <field id="54" name="SCPC" description="Passenger Class 2" start="233" length="1" type="AN" />
+        <field id="55" name="SCPC" description="Passenger Class 3" start="234" length="1" type="AN" />
+        <field id="56" name="SCPC" description="Passenger Class 4" start="235" length="1" type="AN" />
+        <field id="57" name="SCPC" description="Passenger Class 5" start="236" length="1" type="AN" />
+        <field id="58" name="SCPC" description="Passenger Class 6" start="237" length="1" type="AN" />
+        <field id="59" name="SCPC" description="Passenger Class 7" start="238" length="1" type="AN" />
+        <field id="60" name="SCPC" description="Passenger Class 8" start="239" length="1" type="AN" />
+        <field id="61" name="SCPC" description="Passenger Class 9" start="240" length="1" type="AN" />
+        <field id="62" name="SCPC" description="Passenger Class 10" start="241" length="1" type="AN" />
+        <field id="63" name="SCLS" description="Longest Sector" start="242" length="1" type="AN" />
+        <field id="64" name="CSDP" description="Codeshare Data Probable" start="243" length="1" type="AN" />
+        <field id="65" name="FILL" description="Filler" start="244" length="6" type="AN" />
+        <field id="66" name="SCAO" description="Aircraft Owner" start="250" length="3" type="AN" />
+        <field id="67" name="SCFR" description="Full Routing" start="253" length="45" type="AN" />
+        <field id="68" name="SCDS" description="Shared Airline Designator" start="298" length="3" type="AN" />
+        <field id="69" name="FILL" description="Filler" start="301" length="9" type="AN" />
+        <field id="70" name="COUN" description="Coupon Number" start="310" length="1" type="AN" />
+        <field id="71" name="SCAD" description="Arrival Day" start="311" length="1" type="AN" />
+        <field id="72" name="SCDO" description="Days of Operation" start="312" length="7" type="N" />
+        <field id="73" name="SCST" description="Stops" start="319" length="2" type="AN" />
+        <field id="74" name="SCPC" description="Passenger Class 1" start="321" length="1" type="AN" />
+        <field id="75" name="SCPC" description="Passenger Class 2" start="322" length="1" type="AN" />
+        <field id="76" name="SCPC" description="Passenger Class 3" start="323" length="1" type="AN" />
+        <field id="77" name="SCPC" description="Passenger Class 4" start="324" length="1" type="AN" />
+        <field id="78" name="SCPC" description="Passenger Class 5" start="325" length="1" type="AN" />
+        <field id="79" name="SCPC" description="Passenger Class 6" start="326" length="1" type="AN" />
+        <field id="80" name="SCPC" description="Passenger Class 7" start="327" length="1" type="AN" />
+        <field id="81" name="SCPC" description="Passenger Class 8" start="328" length="1" type="AN" />
+        <field id="82" name="SCPC" description="Passenger Class 9" start="329" length="1" type="AN" />
+        <field id="83" name="SCPC" description="Passenger Class 10" start="330" length="1" type="AN" />
+        <field id="84" name="SCLS" description="Longest Sector" start="331" length="1" type="AN" />
+        <field id="85" name="CSDP" description="Codeshare Data Probable" start="332" length="1" type="AN" />
+        <field id="86" name="FILL" description="Filler" start="333" length="6" type="AN" />
+        <field id="87" name="SCAO" description="Aircraft Owner" start="339" length="3" type="AN" />
+        <field id="88" name="SCFR" description="Full Routing" start="342" length="45" type="AN" />
+        <field id="89" name="SCDS" description="Shared Airline Designator" start="387" length="3" type="AN" />
+        <field id="90" name="FILL" description="Filler" start="390" length="11" type="AN" />
+    </record>
+
+    <record name="90" alias="R90" description="Frequent Flyer Informational Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="DAIS" description="Date of Issue" start="43" length="8" type="D" />
+        <field id="8" name="FILL" description="Filler" start="51" length="3" type="AN" />
+        <field id="9" name="COUN" description="Coupon Number" start="54" length="1" type="AN" />
+        <field id="10" name="FBTD" description="Coupon Fare Basis/Tkt Designator" start="55" length="15" type="AN" />
+        <field id="11" name="RBKD" description="Count Ticketing Class of Service" start="70" length="2" type="AN" />
+        <field id="12" name="MILE" description="FF Mileage Value" start="72" length="6" type="N" />
+        <field id="13" name="FMRA" description="FF Mileage Redemption Amount" start="78" length="10" type="N" />
+        <field id="14" name="FPBC" description="FF Redemption Amount Base Currency Code" start="88" length="4" type="AN" />
+        <field id="15" name="FFSC" description="FF Redemption Interline Service Charge" start="92" length="6" type="AN" />
+        <field id="16" name="FFAT" description="FF Redemption Handling Fee Agreement" start="98" length="1" type="AN" />
+        <field id="17" name="FFCP" description="FF Redemption Handling Fee Percentage" start="99" length="6" type="AN" />
+        <field id="18" name="FFCA" description="FF Redemption Handling Fee Charge Amount" start="105" length="11" type="AN" />
+        <field id="19" name="FHBC" description="FF Redemption Handling Fee Base Currency" start="116" length="4" type="AN" />
+        <field id="20" name="FILL" description="Filler" start="120" length="20" type="AN" />
+        <field id="21" name="COUN" description="Coupon Number" start="140" length="1" type="AN" />
+        <field id="22" name="FBTD" description="Coupon Fare Basis/Tkt Designator" start="141" length="15" type="AN" />
+        <field id="23" name="RBKD" description="Count Ticketing Class of Service" start="156" length="2" type="AN" />
+        <field id="24" name="MILE" description="FF Mileage Value" start="158" length="6" type="N" />
+        <field id="25" name="FMRA" description="FF Mileage Redemption Amount" start="164" length="10" type="N" />
+        <field id="26" name="FPBC" description="FF Redemption Amount Base Currency Code" start="174" length="4" type="AN" />
+        <field id="27" name="FFSC" description="FF Redemption Interline Service Charge" start="178" length="6" type="AN" />
+        <field id="28" name="FFAT" description="FF Redemption Handling Fee Agreement" start="184" length="1" type="AN" />
+        <field id="29" name="FFCP" description="FF Redemption Handling Fee Percentage" start="185" length="6" type="AN" />
+        <field id="30" name="FFCA" description="FF Redemption Handling Fee Charge Amount" start="191" length="11" type="AN" />
+        <field id="31" name="FHBC" description="FF Redemption Handling Fee Base Currency" start="202" length="4" type="AN" />
+        <field id="32" name="FILL" description="Filler" start="206" length="20" type="AN" />
+        <field id="33" name="COUN" description="Coupon Number" start="226" length="1" type="AN" />
+        <field id="34" name="FBTD" description="Coupon Fare Basis/Tkt Designator" start="227" length="15" type="AN" />
+        <field id="35" name="RBKD" description="Count Ticketing Class of Service" start="242" length="2" type="AN" />
+        <field id="36" name="MILE" description="FF Mileage Value" start="244" length="6" type="N" />
+        <field id="37" name="FMRA" description="FF Mileage Redemption Amount" start="250" length="10" type="N" />
+        <field id="38" name="FPBC" description="FF Redemption Amount Base Currency Code" start="260" length="4" type="AN" />
+        <field id="39" name="FFSC" description="FF Redemption Interline Service Charge" start="264" length="6" type="AN" />
+        <field id="40" name="FFAT" description="FF Redemption Handling Fee Agreement" start="270" length="1" type="AN" />
+        <field id="41" name="FFCP" description="FF Redemption Handling Fee Percentage" start="271" length="6" type="AN" />
+        <field id="42" name="FFCA" description="FF Redemption Handling Fee Charge Amount" start="277" length="11" type="AN" />
+        <field id="43" name="FHBC" description="FF Redemption Handling Fee Base Currency" start="288" length="4" type="AN" />
+        <field id="44" name="FILL" description="Filler" start="292" length="20" type="AN" />
+        <field id="45" name="COUN" description="Coupon Number" start="312" length="1" type="AN" />
+        <field id="46" name="FBTD" description="Coupon Fare Basis/Tkt Designator" start="313" length="15" type="AN" />
+        <field id="47" name="RBKD" description="Count Ticketing Class of Service" start="328" length="2" type="AN" />
+        <field id="48" name="MILE" description="FF Mileage Value" start="330" length="6" type="N" />
+        <field id="49" name="FMRA" description="FF Mileage Redemption Amount" start="336" length="10" type="N" />
+        <field id="50" name="FPBC" description="FF Redemption Amount Base Currency Code" start="346" length="4" type="AN" />
+        <field id="51" name="FFSC" description="FF Redemption Interline Service Charge" start="350" length="6" type="AN" />
+        <field id="52" name="FFAT" description="FF Redemption Handling Fee Agreement" start="356" length="1" type="AN" />
+        <field id="53" name="FFCP" description="FF Redemption Handling Fee Percentage" start="357" length="6" type="AN" />
+        <field id="54" name="FFCA" description="FF Redemption Handling Fee Charge Amount" start="363" length="11" type="AN" />
+        <field id="55" name="FHBC" description="FF Redemption Handling Fee Base Currency" start="374" length="4" type="AN" />
+        <field id="56" name="FILL" description="Filler" start="378" length="20" type="AN" />
+        <field id="57" name="INTR" description="Internal ATPCO Use Only" start="398" length="3" type="AN" />
+    </record>
+
+    <record name="97" alias="R97" description="NFP ISC and Handling Fee Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="AN" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="CPET" description="CPE Indicator" start="43" length="1" type="AN" />
+        <field id="8" name="SRCE" description="Source of Data" start="44" length="3" type="AN" />
+        <field id="9" name="UNPL" description="Unplanned Lift Indicator" start="47" length="1" type="AN" />
+        <field id="10" name="FILL" description="Filler" start="48" length="16" type="AN" />
+        <field id="11" name="COUN" description="Coupon Number" start="64" length="1" type="AN" />
+        <field id="12" name="ISCA" description="Settlement Interline Service Charge Amount" start="65" length="11" type="AN" />
+        <field id="13" name="CUTP" description="Currency Type" start="76" length="4" type="AN" />
+        <field id="14" name="ISCP" description="Settlement Interline Service Charge Percentage" start="80" length="6" type="AN" />
+        <field id="15" name="HFCA" description="Handling Fee Charge Amount" start="86" length="11" type="AN" />
+        <field id="16" name="CUTP" description="Currency Type" start="97" length="4" type="AN" />
+        <field id="17" name="HFCP" description="Handling Fee Charge Percentage" start="101" length="6" type="AN" />
+        <field id="18" name="IBSC" description="Industry/Bilateral ISC applied" start="107" length="1" type="AN" />
+        <field id="19" name="MTCH" description="Coupon Value Match Tag" start="108" length="1" type="AN" />
+        <field id="20" name="FANF" description="First and Final™ Tag" start="109" length="1" type="AN" />
+        <field id="21" name="ISCA" description="Industry Interline Service Charge Amount" start="110" length="11" type="AN" />
+        <field id="22" name="CUTP" description="Currency Type" start="121" length="4" type="AN" />
+        <field id="23" name="ISCP" description="Industry Interline Service Charge Percentage" start="125" length="6" type="AN" />
+        <field id="24" name="AISC" description="Type of Clearing House ISC" start="131" length="1" type="AN" />
+        <field id="25" name="HFAT" description="Handling Fee Agreement Type" start="132" length="1" type="AN" />
+        <field id="26" name="HFBC" description="Handling Fee Base Currency Code" start="133" length="4" type="AN" />
+        <field id="27" name="UATS" description="UATP Settlement Discount Percentage" start="137" length="4" type="N" />
+        <field id="28" name="UATI" description="UATP Industry Discount Percentage" start="141" length="4" type="N" />
+        <field id="29" name="UATT" description="UATP Discount Type" start="145" length="1" type="AN" />
+        <field id="30" name="FILL" description="Filler" start="146" length="2" type="AN" />
+        <field id="31" name="COUN" description="Coupon Number" start="148" length="1" type="AN" />
+        <field id="32" name="ISCA" description="Settlement Interline Service Charge Amount" start="149" length="11" type="AN" />
+        <field id="33" name="CUTP" description="Currency Type" start="160" length="4" type="AN" />
+        <field id="34" name="ISCP" description="Settlement Interline Service Charge Percentage" start="164" length="6" type="AN" />
+        <field id="35" name="HFCA" description="Handling Fee Charge Amount" start="170" length="11" type="AN" />
+        <field id="36" name="CUTP" description="Currency Type" start="181" length="4" type="AN" />
+        <field id="37" name="HFCP" description="Handling Fee Charge Percentage" start="185" length="6" type="AN" />
+        <field id="38" name="IBSC" description="Industry/Bilateral ISC applied" start="191" length="1" type="AN" />
+        <field id="39" name="MTCH" description="Coupon Value Match Tag" start="192" length="1" type="AN" />
+        <field id="40" name="FANF" description="First and Final™ Tag" start="193" length="1" type="AN" />
+        <field id="41" name="ISCA" description="Industry Interline Service Charge Amount" start="194" length="11" type="AN" />
+        <field id="42" name="CUTP" description="Currency Type" start="205" length="4" type="AN" />
+        <field id="43" name="ISCP" description="Industry Interline Service Charge Percentage" start="209" length="6" type="AN" />
+        <field id="44" name="AISC" description="Type of Clearing House ISC" start="215" length="1" type="AN" />
+        <field id="45" name="HFAT" description="Handling Fee Agreement Type" start="216" length="1" type="AN" />
+        <field id="46" name="HFBC" description="Handling Fee Base Currency Code" start="217" length="4" type="AN" />
+        <field id="47" name="UATS" description="UATP Settlement Discount Percentage" start="221" length="4" type="N" />
+        <field id="48" name="UATI" description="UATP Industry Discount Percentage" start="225" length="4" type="N" />
+        <field id="49" name="UATT" description="UATP Discount Type" start="229" length="1" type="AN" />
+        <field id="50" name="FILL" description="Filler" start="230" length="2" type="AN" />
+        <field id="51" name="COUN" description="Coupon Number" start="232" length="1" type="AN" />
+        <field id="52" name="ISCA" description="Settlement Interline Service Charge Amount" start="233" length="11" type="AN" />
+        <field id="53" name="CUTP" description="Currency Type" start="244" length="4" type="AN" />
+        <field id="54" name="ISCP" description="Settlement Interline Service Charge Percentage" start="248" length="6" type="AN" />
+        <field id="55" name="HFCA" description="Handling Fee Charge Amount" start="254" length="11" type="AN" />
+        <field id="56" name="CUTP" description="Currency Type" start="265" length="4" type="AN" />
+        <field id="57" name="HFCP" description="Handling Fee Charge Percentage" start="269" length="6" type="AN" />
+        <field id="58" name="IBSC" description="Industry/Bilateral ISC applied" start="275" length="1" type="AN" />
+        <field id="59" name="MTCH" description="Coupon Value Match Tag" start="276" length="1" type="AN" />
+        <field id="60" name="FANF" description="First and Final™ Tag" start="277" length="1" type="AN" />
+        <field id="61" name="ISCA" description="Industry Interline Service Charge Amount" start="278" length="11" type="AN" />
+        <field id="62" name="CUTP" description="Currency Type" start="289" length="4" type="AN" />
+        <field id="63" name="ISCP" description="Industry Interline Service Charge Percentage" start="293" length="6" type="AN" />
+        <field id="64" name="AISC" description="Type of Clearing House ISC" start="299" length="1" type="AN" />
+        <field id="65" name="HFAT" description="Handling Fee Agreement Type" start="300" length="1" type="AN" />
+        <field id="66" name="HFBC" description="Handling Fee Base Currency Code" start="301" length="4" type="AN" />
+        <field id="67" name="UATS" description="UATP Settlement Discount Percentage" start="305" length="4" type="N" />
+        <field id="68" name="UATI" description="UATP Industry Discount Percentage" start="309" length="4" type="N" />
+        <field id="69" name="UATT" description="UATP Discount Type" start="313" length="1" type="AN" />
+        <field id="70" name="FILL" description="Filler" start="314" length="2" type="AN" />
+        <field id="71" name="COUN" description="Coupon Number" start="316" length="1" type="AN" />
+        <field id="72" name="ISCA" description="Settlement Interline Service Charge Amount" start="317" length="11" type="AN" />
+        <field id="73" name="CUTP" description="Currency Type" start="328" length="4" type="AN" />
+        <field id="74" name="ISCP" description="Settlement Interline Service Charge Percentage" start="332" length="6" type="AN" />
+        <field id="75" name="HFCA" description="Handling Fee Charge Amount" start="338" length="11" type="AN" />
+        <field id="76" name="CUTP" description="Currency Type" start="349" length="4" type="AN" />
+        <field id="77" name="HFCP" description="Handling Fee Charge Percentage" start="353" length="6" type="AN" />
+        <field id="78" name="IBSC" description="Industry/Bilateral ISC applied" start="359" length="1" type="AN" />
+        <field id="79" name="MTCH" description="Coupon Value Match Tag" start="360" length="1" type="AN" />
+        <field id="80" name="FANF" description="First and Final™ Tag" start="361" length="1" type="AN" />
+        <field id="81" name="ISCA" description="Industry Interline Service Charge Amount" start="362" length="11" type="AN" />
+        <field id="82" name="CUTP" description="Currency Type" start="373" length="4" type="AN" />
+        <field id="83" name="ISCP" description="Industry Interline Service Charge Percentage" start="377" length="6" type="AN" />
+        <field id="84" name="AISC" description="Type of Clearing House ISC" start="383" length="1" type="AN" />
+        <field id="85" name="HFAT" description="Handling Fee Agreement Type" start="384" length="1" type="AN" />
+        <field id="86" name="HFBC" description="Handling Fee Base Currency Code" start="385" length="4" type="AN" />
+        <field id="87" name="UATS" description="UATP Settlement Discount Percentage" start="389" length="4" type="N" />
+        <field id="88" name="UATI" description="UATP Industry Discount Percentage" start="393" length="4" type="N" />
+        <field id="89" name="UATT" description="UATP Discount Type" start="397" length="1" type="AN" />
+        <field id="90" name="INTR" description="Internal ATPCO Use Only" start="398" length="3" type="N" />
+    </record>
+
+    <record name="98" alias="R98" description="NFP Interlineable Tax Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="CPET" description="CPE Indicator" start="43" length="1" type="AN" />
+        <field id="8" name="SRCE" description="Source of Data" start="44" length="3" type="AN" />
+        <field id="9" name="FILL" description="Filler" start="47" length="5" type="AN" />
+        <field id="10" name="TFCT" description="Tax Fee Currency Code" start="52" length="4" type="AN" />
+        <field id="11" name="COUN" description="Coupon Number" start="56" length="1" type="AN" />
+        <field id="12" name="TFTT" description="Tax Fee Type" start="57" length="3" type="AN" />
+        <field id="13" name="TFAT" description="Tax Fee Amount" start="60" length="11" type="N" />
+        <field id="14" name="PTFC" description="Published Tax Fee Currency Code" start="71" length="4" type="AN" />
+        <field id="15" name="TFTT" description="Tax Fee Type" start="75" length="3" type="AN" />
+        <field id="16" name="TFAT" description="Tax Fee Amount" start="78" length="11" type="N" />
+        <field id="17" name="PTFC" description="Published Tax Fee Currency Code" start="89" length="4" type="AN" />
+        <field id="18" name="TFTT" description="Tax Fee Type" start="93" length="3" type="AN" />
+        <field id="19" name="TFAT" description="Tax Fee Amount" start="96" length="11" type="N" />
+        <field id="20" name="PTFC" description="Published Tax Fee Currency Code" start="107" length="4" type="AN" />
+        <field id="21" name="TFTT" description="Tax Fee Type" start="111" length="3" type="AN" />
+        <field id="22" name="TFAT" description="Tax Fee Amount" start="114" length="11" type="N" />
+        <field id="23" name="PTFC" description="Published Tax Fee Currency Code" start="125" length="4" type="AN" />
+        <field id="24" name="MTCH" description="Coupon Value Match Tag" start="129" length="1" type="AN" />
+        <field id="25" name="FANF" description="First and Final™ Tag" start="130" length="1" type="AN" />
+        <field id="26" name="FILL" description="Filler" start="131" length="6" type="AN" />
+        <field id="27" name="COUN" description="Coupon Number" start="137" length="1" type="AN" />
+        <field id="28" name="TFTT" description="Tax Fee Type" start="138" length="3" type="AN" />
+        <field id="29" name="TFAT" description="Tax Fee Amount" start="141" length="11" type="N" />
+        <field id="30" name="PTFC" description="Published Tax Fee Currency Code" start="152" length="4" type="AN" />
+        <field id="31" name="TFTT" description="Tax Fee Type" start="156" length="3" type="AN" />
+        <field id="32" name="TFAT" description="Tax Fee Amount" start="159" length="11" type="N" />
+        <field id="33" name="PTFC" description="Published Tax Fee Currency Code" start="170" length="4" type="AN" />
+        <field id="34" name="TFTT" description="Tax Fee Type" start="174" length="3" type="AN" />
+        <field id="35" name="TFAT" description="Tax Fee Amount" start="177" length="11" type="N" />
+        <field id="36" name="PTFC" description="Published Tax Fee Currency Code" start="188" length="4" type="AN" />
+        <field id="37" name="TFTT" description="Tax Fee Type" start="192" length="3" type="AN" />
+        <field id="38" name="TFAT" description="Tax Fee Amount" start="195" length="11" type="N" />
+        <field id="39" name="PTFC" description="Published Tax Fee Currency Code" start="206" length="4" type="AN" />
+        <field id="40" name="MTCH" description="Coupon Value Match Tag" start="210" length="1" type="AN" />
+        <field id="41" name="FANF" description="First and Final™ Tag" start="211" length="1" type="AN" />
+        <field id="42" name="FILL" description="Filler" start="212" length="6" type="AN" />
+        <field id="43" name="COUN" description="Coupon Number" start="218" length="1" type="AN" />
+        <field id="44" name="TFTT" description="Tax Fee Type" start="219" length="3" type="AN" />
+        <field id="45" name="TFAT" description="Tax Fee Amount" start="222" length="11" type="N" />
+        <field id="46" name="PTFC" description="Published Tax Fee Currency Code" start="233" length="4" type="AN" />
+        <field id="47" name="TFTT" description="Tax Fee Type" start="237" length="3" type="AN" />
+        <field id="48" name="TFAT" description="Tax Fee Amount" start="240" length="11" type="N" />
+        <field id="49" name="PTFC" description="Published Tax Fee Currency Code" start="251" length="4" type="AN" />
+        <field id="50" name="TFTT" description="Tax Fee Type" start="255" length="3" type="AN" />
+        <field id="51" name="TFAT" description="Tax Fee Amount" start="258" length="11" type="N" />
+        <field id="52" name="PTFC" description="Published Tax Fee Currency Code" start="269" length="4" type="AN" />
+        <field id="53" name="TFTT" description="Tax Fee Type" start="273" length="3" type="AN" />
+        <field id="54" name="TFAT" description="Tax Fee Amount" start="276" length="11" type="N" />
+        <field id="55" name="PTFC" description="Published Tax Fee Currency Code" start="287" length="4" type="AN" />
+        <field id="56" name="MTCH" description="Coupon Value Match Tag" start="291" length="1" type="AN" />
+        <field id="57" name="FANF" description="First and Final™ Tag" start="292" length="1" type="AN" />
+        <field id="58" name="FILL" description="Filler" start="293" length="6" type="AN" />
+        <field id="59" name="COUN" description="Coupon Number" start="299" length="1" type="AN" />
+        <field id="60" name="TFTT" description="Tax Fee Type" start="300" length="3" type="AN" />
+        <field id="61" name="TFAT" description="Tax Fee Amount" start="303" length="11" type="N" />
+        <field id="62" name="PTFC" description="Published Tax Fee Currency Code" start="314" length="4" type="AN" />
+        <field id="63" name="TFTT" description="Tax Fee Type" start="318" length="3" type="AN" />
+        <field id="64" name="TFAT" description="Tax Fee Amount" start="321" length="11" type="N" />
+        <field id="65" name="PTFC" description="Published Tax Fee Currency Code" start="332" length="4" type="AN" />
+        <field id="66" name="TFTT" description="Tax Fee Type" start="336" length="3" type="AN" />
+        <field id="67" name="TFAT" description="Tax Fee Amount" start="339" length="11" type="N" />
+        <field id="68" name="PTFC" description="Published Tax Fee Currency Code" start="350" length="4" type="AN" />
+        <field id="69" name="TFTT" description="Tax Fee Type" start="354" length="3" type="AN" />
+        <field id="70" name="TFAT" description="Tax Fee Amount" start="357" length="11" type="N" />
+        <field id="71" name="PTFC" description="Published Tax Fee Currency Code" start="368" length="4" type="AN" />
+        <field id="72" name="MTCH" description="Coupon Value Match Tag" start="372" length="1" type="AN" />
+        <field id="73" name="FANF" description="First and Final™ Tag" start="373" length="1" type="AN" />
+        <field id="74" name="FILL" description="Filler" start="374" length="6" type="AN" />
+        <field id="75" name="UITC" description="Unidentified Tax Code" start="380" length="3" type="AN" />
+        <field id="76" name="UITC" description="Unidentified Tax Code" start="383" length="3" type="AN" />
+        <field id="77" name="UITC" description="Unidentified Tax Code" start="386" length="3" type="AN" />
+        <field id="78" name="UNIT" description="Tag denotes more than 3 Unidentified Tax" start="389" length="1" type="AN" />
+        <field id="79" name="UNPL" description="Unplanned Lift Indicator" start="390" length="1" type="AN" />
+        <field id="80" name="FILL" description="Filler" start="391" length="7" type="AN" />
+        <field id="81" name="INTR" description="Internal ATPCO Use Only" start="398" length="3" type="N" />
+    </record>
+
+    <record name="99" alias="R99" description="NFP Proration Error Record (Optional)">
+        <field id="1" name="RCID" description="Record Identification" start="1" length="2" type="AN" />
+        <field id="2" name="SQNR" description="Sequence Number" start="3" length="8" type="I" />
+        <field id="3" name="TDNR" description="Ticket/Document Number" start="11" length="15" type="AN" />
+        <field id="4" name="CDGT" description="Ticket/Document Number Check Digit" start="26" length="1" type="I" />
+        <field id="5" name="TCNR" description="Transmission Control Number" start="27" length="15" type="AN" />
+        <field id="6" name="TCND" description="Transmission Control Number Check Digit" start="42" length="1" type="I" />
+        <field id="7" name="ERCD" description="Error Code #1" start="43" length="4" type="AN" />
+        <field id="8" name="ERCD" description="Error Code #2" start="47" length="4" type="AN" />
+        <field id="9" name="ERCD" description="Error Code #3" start="51" length="4" type="AN" />
+        <field id="10" name="ERCD" description="Error Code #4" start="55" length="4" type="AN" />
+        <field id="11" name="ERCD" description="Error Code #5" start="59" length="4" type="AN" />
+        <field id="12" name="ERCD" description="Error Code #6" start="63" length="4" type="AN" />
+        <field id="13" name="ERCD" description="Error Code #7" start="67" length="4" type="AN" />
+        <field id="14" name="ERCD" description="Error Code #8" start="71" length="4" type="AN" />
+        <field id="15" name="ERCD" description="Error Code #9" start="75" length="4" type="AN" />
+        <field id="16" name="ERCD" description="Error Code #10" start="79" length="4" type="AN" />
+        <field id="17" name="FILL" description="Filler" start="83" length="40" type="AN" />
+        <field id="18" name="SRCE" description="Source of Data" start="123" length="3" type="AN" />
+        <field id="19" name="CPET" description="CPE Indicator" start="126" length="1" type="AN" />
+        <field id="20" name="FILL" description="Filler" start="127" length="270" type="AN" />
+        <field id="21" name="INTR" description="Internal ATPCO Use Only" start="397" length="3" type="N" />
+        <field id="22" name="UNPL" description="Unplanned Lift Indicator" start="400" length="1" type="AN" />
+    </record>
+
+</rof>

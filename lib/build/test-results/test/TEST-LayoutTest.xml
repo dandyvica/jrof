@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Layout class tests" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-11-21T19:11:00" hostname="b550m" time="0.051">
+  <properties/>
+  <testcase name="if the layout contains a field in any record" classname="LayoutTest" time="0.007"/>
+  <testcase name="isr test" classname="LayoutTest" time="0.03"/>
+  <testcase name="if the layout contains a record" classname="LayoutTest" time="0.003"/>
+  <testcase name="get a record from layout" classname="LayoutTest" time="0.002"/>
+  <testcase name="constructor" classname="LayoutTest" time="0.002"/>
+  <testcase name="test size method" classname="LayoutTest" time="0.002"/>
+  <testcase name="iterator" classname="LayoutTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

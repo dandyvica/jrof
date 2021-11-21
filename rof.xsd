@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.w3schools.com"
+    xmlns="http://www.w3schools.com"
+    elementFormDefault="qualified">
+
+<!-- metadata -->
+<xs:annotation>
+    <xs:appinfo>rof</xs:appinfo>
+    <xs:documentation xml:lang="en">
+        This is the specification for defining XML layouts
+    </xs:documentation>
+</xs:annotation>
+
+<!-- Definition of <meta> -->
+<xs:element name="meta">
+	<xs:complexType>
+		<xs:attribute name="version" type="xs:string" use="optional"/>
+		<xs:attribute name="description" type="xs:string" use="optional"/>
+		<xs:attribute name="reclength" type="xs:positiveInteger" use="optional"/>
+	</xs:complexType>
+</xs:element>
+
+<!-- field & records share a description attribute, which should be carefully checked -->
+<xs:simpleType name="rbfDescription">
+	<xs:restriction base="xs:string">
+        <xs:pattern value="[\w ()/#\-\.%,?\*:=_]*"/>
+	</xs:restriction>
+</xs:simpleType>
+
+
+<!-- Definition of <field> -->
+<xs:element name="field">
+	<xs:complexType>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="description" type="rbfDescription"/>
+		<xs:attribute name="start" type="xs:positiveInteger" use="required"/>
+		<xs:attribute name="end" type="xs:positiveInteger" use="optional"/>
+		<xs:attribute name="length" type="xs:positiveInteger" use="optional"/>
+		<xs:attribute name="type" type="xs:string" use="required"/>
+		<xs:attribute name="pattern" type="xs:string" use="optional"/>
+		<xs:attribute name="alias" type="xs:string" use="optional"/>
+		<xs:attribute name="id" type="xs:positiveInteger" use="optional"/>
+	</xs:complexType>
+</xs:element>
+
+<!-- Definition of <record> -->
+
+<!-- This class of <record> could be used -->
+<xs:element name="record">
+	<xs:complexType>
+		<xs:choice>
+		  <xs:element ref="field" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:choice>
+		<xs:attribute name="name" type="xs:NMTOKEN"  use="required"/>
+		<xs:attribute name="description" type="rbfDescription" use="required"/>
+		<xs:attribute name="alias" type="xs:string"/>
+	</xs:complexType>
+</xs:element>
+
+<!-- Definition of possible values for a type attribute of a <fieldtype> tag -->
+<xs:simpleType name="typeOfFieldType">
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="string"/>
+		<xs:enumeration value="integer"/>
+		<xs:enumeration value="decimal"/>
+		<xs:enumeration value="date"/>
+		<xs:enumeration value="time"/>
+		<xs:enumeration value="dateTime"/>
+	</xs:restriction>
+</xs:simpleType>
+
+<!-- Definition of <fieldtype> -->
+<xs:element name="fieldtype">
+	<xs:complexType>
+		<xs:attribute name="type" type="xs:string" use="required"/>
+		<xs:attribute name="class" type="typeOfFieldType" use="required"/>
+		<xs:attribute name="pattern" type="xs:string" use="optional"/>
+		<xs:attribute name="format" type="xs:string" use="optional"/>
+	</xs:complexType>
+</xs:element>
+
+<!-- Definition of <rof> -->
+<xs:element name="rof">
+	<xs:complexType>
+		<xs:sequence>
+		  <xs:element ref="meta" minOccurs="1" maxOccurs="1"/>
+		  <xs:element ref="fieldtype" minOccurs="0" maxOccurs="unbounded"/>
+		  <xs:element ref="record" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+</xs:schema>

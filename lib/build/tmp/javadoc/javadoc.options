@@ -1,0 +1,14 @@
+-classpath '/data/projects/jrof/lib/build/classes/java/main:/data/projects/jrof/lib/build/resources/main'
+-d '/data/projects/jrof/lib/build/docs/javadoc'
+-doctitle 'lib API'
+-html5 
+-notimestamp 
+-quiet 
+-windowtitle 'lib API'
+'/data/projects/jrof/lib/src/main/java/jrof/Field.java'
+'/data/projects/jrof/lib/src/main/java/jrof/FieldType.java'
+'/data/projects/jrof/lib/src/main/java/jrof/Record.java'
+'/data/projects/jrof/lib/src/main/java/jrof/Atom.java'
+'/data/projects/jrof/lib/src/main/java/jrof/FieldClass.java'
+'/data/projects/jrof/lib/src/main/java/jrof/Layout.java'
+'/data/projects/jrof/lib/src/main/java/jrof/Reader.java'

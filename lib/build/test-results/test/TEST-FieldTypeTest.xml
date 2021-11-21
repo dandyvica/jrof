@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="FieldType class tests" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-11-21T19:11:00" hostname="b550m" time="0.032">
+  <properties/>
+  <testcase name="copy constructor" classname="FieldTypeTest" time="0.023"/>
+  <testcase name="constructor from XML fragment" classname="FieldTypeTest" time="0.001"/>
+  <testcase name="wrong class, not present in enum" classname="FieldTypeTest" time="0.003"/>
+  <testcase name="wrong pattern throws exception" classname="FieldTypeTest" time="0.002"/>
+  <testcase name="pattern match" classname="FieldTypeTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
